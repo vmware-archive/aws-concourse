@@ -8,3 +8,4 @@ TF_VAR_aws_cert_arn: XXXXX
 TF_VAR_rds_db_username: XXXXX
 TF_VAR_rds_db_password: XXXXX
 TF_VAR_client: XXXXX
+TF_VAR_environment: XXXXX
