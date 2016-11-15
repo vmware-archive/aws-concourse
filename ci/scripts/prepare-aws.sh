@@ -5,23 +5,23 @@ chmod 400 bosh.pem
 
 CWD=$(pwd)
 
-cp aws-prepare-get/terraform/sandbox/pcf/*.tf aws-prepare-get/concourse
-cp -r aws-prepare-get/terraform/sandbox/pcf/temp_instance aws-prepare-get/concourse
+cp aws-prepare-get/terraform/c0-aws-base/*.tf aws-prepare-get/ci
+cp -r aws-prepare-get/terraform/c0-aws-base/temp_instance aws-prepare-get/ci
 
 RDS_FILE_NAME="rds_input.txt"
 if [[ -s pcfawsops-terraform-state-get/terraform.tfstate ]]; then
-    cp pcfawsops-terraform-state-get/terraform.tfstate aws-prepare-get/concourse/terraform.tfstate
+    cp pcfawsops-terraform-state-get/terraform.tfstate aws-prepare-get/ci/terraform.tfstate
 fi
 
-cd aws-prepare-get/concourse
+cd aws-prepare-get/ci
 terraform apply
 
 cd $CWD
-cp aws-prepare-get/concourse/terraform.tfstate pcfawsops-terraform-state-put/terraform.tfstate
+cp aws-prepare-get/ci/terraform.tfstate pcfawsops-terraform-state-put/terraform.tfstate
 
 
 
-cd aws-prepare-get/concourse
+cd aws-prepare-get/ci
 # get db details
 db_host=$(terraform state show aws_db_instance.pcf_rds | grep "\bendpoint\b" | awk '{print $3}')
 db_user=$(terraform state show aws_db_instance.pcf_rds | grep "\busername\b" | awk '{print $3}')
@@ -66,12 +66,12 @@ echo "export TF_VAR_environment=$TF_VAR_environment" >> $OUTPUT_DIR/$RDS_FILE_NA
 # copy the files required to create temp instance
 cd $CWD
 cp bosh.pem $OUTPUT_DIR/temp_instance_key.pem
-cp aws-prepare-get/concourse/variables.tf $OUTPUT_DIR/variables.tf
-cp aws-prepare-get/concourse/aws.tf $OUTPUT_DIR/aws.tf
-cp aws-prepare-get/concourse/temp_instance/temp_instance.tf $OUTPUT_DIR/temp_instance.tf
-cp aws-prepare-get/concourse/temp_instance/create_databases.tf_move $OUTPUT_DIR/create_databases.tf_move
-cp aws-prepare-get/concourse/temp_instance/create_database.sh $OUTPUT_DIR/create_database.sh
-cp aws-prepare-get/concourse/temp_instance/terraform $OUTPUT_DIR/terraform
+cp aws-prepare-get/ci/variables.tf $OUTPUT_DIR/variables.tf
+cp aws-prepare-get/ci/aws.tf $OUTPUT_DIR/aws.tf
+cp aws-prepare-get/ci/temp_instance/temp_instance.tf $OUTPUT_DIR/temp_instance.tf
+cp aws-prepare-get/ci/temp_instance/create_databases.tf_move $OUTPUT_DIR/create_databases.tf_move
+cp aws-prepare-get/ci/temp_instance/create_database.sh $OUTPUT_DIR/create_database.sh
+cp aws-prepare-get/ci/temp_instance/terraform $OUTPUT_DIR/terraform
 
 
 cd $OUTPUT_DIR

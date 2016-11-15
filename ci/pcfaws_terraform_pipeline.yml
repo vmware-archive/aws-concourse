@@ -4,7 +4,7 @@ resources:
   source:
     branch: master
     uri: https://github.com/c0-ops/aws-concourse.git
-    
+
 - name: pcfawsops-terraform-state-get
   type: s3
   source:
@@ -65,6 +65,7 @@ jobs:
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
+      TF_VAR_client: {{TF_VAR_client}}
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
@@ -79,6 +80,7 @@ jobs:
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
+      TF_VAR_client: {{TF_VAR_client}}
   - put: pcfawsops-terraform-rds-state-put
     params:
       file: pcfawsops-terraform-rds-state-put/rds-terraform.tfstate

@@ -14,16 +14,16 @@ echo "creating temp instance..."
 terraform apply
 
 #get public ip of the temp instance
-temp_instnace_public_ip=$(terraform state show aws_instance.temp_az1 | grep "\bpublic_ip\b" | awk '{print $3}')
-echo "temp instance public ip = $temp_instnace_public_ip"
+temp_instance_public_ip=$(terraform state show aws_instance.temp_az1 | grep "\bpublic_ip\b" | awk '{print $3}')
+echo "temp instance public ip = $temp_instance_public_ip"
 
 if [ -f rds-terraform.tfstate ]; then
-    scp -i temp_instance_key.pem -o StrictHostKeyChecking=no rds-terraform.tfstate ubuntu@$temp_instnace_public_ip:terraform.tfstate terraform.tfstate
+    scp -i temp_instance_key.pem -o StrictHostKeyChecking=no rds-terraform.tfstate ubuntu@$temp_instance_public_ip:terraform.tfstate terraform.tfstate
 fi
 
-ssh -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instnace_public_ip 'chmod a+x create_database.sh && ./create_database.sh'
+ssh -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instance_public_ip 'chmod a+x create_database.sh && ./create_database.sh'
 
-scp -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instnace_public_ip:terraform.tfstate rds-terraform.tfstate
+scp -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instance_public_ip:terraform.tfstate rds-terraform.tfstate
 
 cd $CWD
 cp $OUTPUT_DIR/rds-terraform.tfstate pcfawsops-terraform-rds-state-put/rds-terraform.tfstate
@@ -32,4 +32,3 @@ cp $OUTPUT_DIR/rds-terraform.tfstate pcfawsops-terraform-rds-state-put/rds-terra
 echo "deleting temp instance..."
 cd $OUTPUT_DIR
 terraform destroy --force
-

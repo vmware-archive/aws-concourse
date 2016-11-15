@@ -20,8 +20,6 @@
 
 ```
 # variables for terraform automation
-GIT_USERNAME: XXXXX
-GIT_PASSWORD: XXXXX
 OUTPUT_DIR: terraform-state
 S3_ENDPOINT: https://s3.amazonaws.com
 S3_OUTPUT_BUCKET: <BUCKET_NAME_TO_STORE_TERRAFORM_STATES>
