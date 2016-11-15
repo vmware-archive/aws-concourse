@@ -1,0 +1,9 @@
+# variables for terraform automation
+S3_ENDPOINT: XXXXX
+S3_OUTPUT_BUCKET: XXXXX
+TF_VAR_aws_access_key: XXXXX
+TF_VAR_aws_secret_key: XXXXX
+TF_VAR_aws_key_name: XXXXX
+TF_VAR_aws_cert_arn: XXXXX
+TF_VAR_rds_db_username: XXXXX
+TF_VAR_rds_db_password: XXXXX

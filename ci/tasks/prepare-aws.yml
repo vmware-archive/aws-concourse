@@ -1,0 +1,25 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: virtmerlin/c0-worker
+inputs:
+  - name: aws-prepare-get
+  - name: pcfawsops-terraform-state-get
+outputs:
+  - name: pcfawsops-terraform-state-put
+  - name: terraform-state
+run:
+  path: aws-prepare-get/ci/scripts/prepare-aws.sh
+
+params:
+  OUTPUT_DIR: replace-me
+  TF_VAR_aws_access_key: replace-me
+  TF_VAR_aws_secret_key: replace-me
+  TF_VAR_aws_key_name: replace-me
+  TF_VAR_aws_cert_arn: replace-me
+  TF_VAR_rds_db_username: replace-me
+  TF_VAR_rds_db_password: replace-me
+  TF_VAR_environment: replace-me
