@@ -669,26 +669,3 @@ resource "aws_elb" "PcfTcpElb" {
     Name = "${var.environment}-Pcf Tcp Elb"
   }
 }
-resource "aws_elb" "ConcourseHttpElb" {
-  name = "${var.environment}-Concourse-Http-Elb"
-  subnets = ["${aws_subnet.PcfVpcPublicSubnet_az1.id}","${aws_subnet.PcfVpcPublicSubnet_az2.id}","${aws_subnet.PcfVpcPublicSubnet_az3.id}"]
-  security_groups = ["${aws_security_group.PcfHttpElbSg.id}"]
-
-  listener {
-    instance_port = 8080
-    instance_protocol = "HTTP"
-    lb_port = 443
-    lb_protocol = "HTTPS"
-    ssl_certificate_id = "${var.aws_cert_arn}"
-  }
-  health_check {
-    target = "TCP:8080"
-    timeout = 5
-    interval = 30
-    unhealthy_threshold = 2
-    healthy_threshold = 10
-  }
-  tags {
-    Name = "${var.environment}-Concourse Http Elb"
-  }
-}
