@@ -13,13 +13,3 @@ outputs:
   - name: pcfawsops-terraform-rds-state-put
 run:
   path: aws-prepare-get/ci/scripts/prepare-rds.sh
-
-params:
-  OUTPUT_DIR: replace-me
-  TF_VAR_aws_access_key: replace-me
-  TF_VAR_aws_secret_key: replace-me
-  TF_VAR_aws_key_name: replace-me
-  TF_VAR_aws_cert_arn: replace-me
-  TF_VAR_rds_db_username: replace-me
-  TF_VAR_rds_db_password: replace-me
-  TF_VAR_environment: replace-me
