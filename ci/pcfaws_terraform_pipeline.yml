@@ -4,6 +4,15 @@ resources:
   source:
     branch: master
     uri: https://github.com/c0-ops/aws-concourse.git
+- name: pcfawsops-terraform-state-put
+  type: s3
+  source:
+    disable_ssl: false
+    access_key_id: {{TF_VAR_aws_access_key}}
+    secret_access_key: {{TF_VAR_aws_secret_key}}
+    endpoint: {{S3_ENDPOINT}}
+    bucket: {{S3_OUTPUT_BUCKET}}
+    versioned_file: terraform.tfstate
 
 jobs:
 - name: aws-pcf-prepare
@@ -21,3 +30,6 @@ jobs:
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
+  - put: pcfawsops-terraform-state-put
+    params:
+      file: pcfawsops-terraform-state-put/terraform.tfstate
