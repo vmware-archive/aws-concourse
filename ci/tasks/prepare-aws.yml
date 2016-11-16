@@ -7,9 +7,5 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-prepare-get
-  - name: pcfawsops-terraform-state-get
-outputs:
-  - name: pcfawsops-terraform-state-put
-  - name: terraform-state
 run:
   path: aws-prepare-get/ci/scripts/prepare-aws.sh
