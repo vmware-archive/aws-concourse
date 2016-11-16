@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 
