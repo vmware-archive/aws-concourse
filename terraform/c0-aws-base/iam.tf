@@ -54,14 +54,14 @@ resource "aws_iam_user_policy" "PcfErtPolicy" {
                 "s3:*"
             ],
             "Resource": [
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-buildpacks-${random_id.bucket_id.hex}",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-buildpacks-${random_id.bucket_id.hex}/*",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-droplets-${random_id.bucket_id.hex}",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-droplets-${random_id.bucket_id.hex}/*",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-packages-${random_id.bucket_id.hex}",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-packages-${random_id.bucket_id.hex}/*",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-resources-${random_id.bucket_id.hex}",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-resources-${random_id.bucket_id.hex}/*"
+                "arn:aws:s3:::${var.environment}-pcf-buildpacks",
+                "arn:aws:s3:::${var.environment}-pcf-buildpacks/*",
+                "arn:aws:s3:::${var.environment}-pcf-droplets",
+                "arn:aws:s3:::${var.environment}-pcf-droplets/*",
+                "arn:aws:s3:::${var.environment}-pcf-packages",
+                "arn:aws:s3:::${var.environment}-pcf-packages/*",
+                "arn:aws:s3:::${var.environment}-pcf-resources",
+                "arn:aws:s3:::${var.environment}-pcf-resources/*"
             ],
             "Effect": "Allow",
             "Sid": "ElasticRuntimeS3Permissions"
@@ -181,8 +181,8 @@ data "aws_iam_policy_document" "pcf_iam_rds_role_policy_document" {
                 "s3:*"
             ],
         resources = [
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-bosh-${random_id.bucket_id.hex}",
-                "arn:aws:s3:::${var.client}-${var.environment}-pcf-bosh-${random_id.bucket_id.hex}/*",
+                "arn:aws:s3:::${var.environment}-pcf-bosh",
+                "arn:aws:s3:::${var.environment}-pcf-bosh/*",
         ],
         effect = "Allow",
         sid = "PcfAdminS3Permissions"
@@ -208,5 +208,3 @@ data "aws_iam_policy_document" "pcf_iam_rds_role_policy_document" {
         sid = "AllowToGetInfoAboutCurrentInstanceProfile"
      }
 }
-
-

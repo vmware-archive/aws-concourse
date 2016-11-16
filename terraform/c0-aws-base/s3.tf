@@ -1,21 +1,15 @@
-resource "random_id" "bucket_id" {
-    keepers = {
-        hex = "test"
-    }
-    byte_length = 8
-}
 resource "aws_s3_bucket" "pcf-bosh" {
-    bucket = "${var.environment}-pcf-bosh-${random_id.bucket_id.hex}"
+    bucket = "${var.environment}-pcf-bosh"
     acl = "private"
 
     tags {
         Name = "${var.environment}-pcf-bosh"
-        Environment = "${var.environment}-${var.environment}"
+        Environment = "${var.environment}"
     }
 }
 
 resource "aws_s3_bucket" "pcf-buildpacks" {
-    bucket = "${var.environment}-pcf-buildpacks-${random_id.bucket_id.hex}"
+    bucket = "${var.environment}-pcf-buildpacks"
     acl = "private"
 
     tags {
@@ -25,7 +19,7 @@ resource "aws_s3_bucket" "pcf-buildpacks" {
 }
 
 resource "aws_s3_bucket" "pcf-droplets" {
-    bucket = "${var.environment}-pcf-droplets-${random_id.bucket_id.hex}"
+    bucket = "${var.environment}-pcf-droplets"
     acl = "private"
 
     tags {
@@ -35,7 +29,7 @@ resource "aws_s3_bucket" "pcf-droplets" {
 }
 
 resource "aws_s3_bucket" "pcf-packages" {
-    bucket = "${var.environment}-pcf-packages-${random_id.bucket_id.hex}"
+    bucket = "${var.environment}-pcf-packages"
     acl = "private"
 
     tags {
@@ -45,7 +39,7 @@ resource "aws_s3_bucket" "pcf-packages" {
 }
 
 resource "aws_s3_bucket" "pcf-resources" {
-    bucket = "${var.environment}-pcf-resources-${random_id.bucket_id.hex}"
+    bucket = "${var.environment}-pcf-resources"
     acl = "private"
 
     tags {
