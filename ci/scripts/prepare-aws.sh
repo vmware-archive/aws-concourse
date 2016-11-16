@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=/opt/terraform/terraform:$PATH
+mv /opt/terraform/terraform /usr/local/bin
 echo "$PRIVATE_KEY" > bosh.pem
 chmod 400 bosh.pem
 

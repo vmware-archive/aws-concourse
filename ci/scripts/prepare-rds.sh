@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=/opt/terraform/terraform:$PATH
+mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 
 if [[ -s pcfawsops-terraform-rds-state-get/rds-terraform.tfstate ]]; then
