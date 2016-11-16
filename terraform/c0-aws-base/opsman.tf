@@ -1,6 +1,6 @@
 # Create OpsMan instance
 resource "aws_instance" "opsmman_az1" {
-    ami = "${var.opsman_ami}"]}"
+    ami = "${var.opsman_ami}"
     availability_zone = "${var.az1}"
     instance_type = "${var.opsman_instance_type}"
     key_name = "${var.aws_key_name}"
