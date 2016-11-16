@@ -3,36 +3,18 @@
 */
 
 /*
-  Bosh Director Security group
+  Ops Manager Security group
 */
 resource "aws_security_group" "directorSG" {
     name = "${var.environment}-pcf_director_sg"
-    description = "Allow incoming connections for bosh director."
+    description = "Allow incoming connections for Ops Manager."
     vpc_id = "${aws_vpc.PcfVpc.id}"
     tags {
-        Name = "${var.environment}-Bosh Director Security Group"
-    }
-    ingress {
-        from_port = 25555
-        to_port = 25555
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        Name = "${var.environment}-Ops Manager Director Security Group"
     }
     ingress {
         from_port = 22
         to_port = 22
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-    ingress {
-        from_port = 0
-        to_port = 0
-        protocol = -1
-        cidr_blocks = ["${var.vpc_cidr}"]
-    }
-    ingress {
-        from_port = 80
-        to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
@@ -42,20 +24,12 @@ resource "aws_security_group" "directorSG" {
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
-# for bosh agent
     ingress {
-        from_port = 6868
-        to_port = 6868
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        from_port = 0
+        to_port = 0
+        protocol = -1
+        cidr_blocks = ["${var.vpc_cidr}"]
     }
-    ingress {
-        from_port = 8443
-        to_port = 8443
-        protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-    }
-
     egress {
         from_port = 0
         to_port = 0

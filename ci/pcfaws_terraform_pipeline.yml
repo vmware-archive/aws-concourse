@@ -37,6 +37,7 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
+    - get: pcfawsops-terraform-state-get
   - task: aws-pcf-prepare
     file: aws-prepare-get/ci/tasks/prepare-aws.yml
     params:
@@ -47,6 +48,7 @@ jobs:
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
+      TF_VAR_opsman_ami: {{TF_VAR_opsman_ami}}
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
@@ -67,6 +69,7 @@ jobs:
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
+      TF_VAR_opsman_ami: {{TF_VAR_opsman_ami}}
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate

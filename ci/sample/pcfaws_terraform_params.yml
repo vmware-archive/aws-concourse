@@ -6,5 +6,6 @@ TF_VAR_aws_cert_arn: XXXXX
 TF_VAR_rds_db_username: XXXXX
 TF_VAR_rds_db_password: XXXXX
 TF_VAR_environment: XXXXX
+TF_VAR_opsman_ami: XXXXX
 S3_ENDPOINT: https://s3.amazonaws.com
 S3_OUTPUT_BUCKET: XXXX

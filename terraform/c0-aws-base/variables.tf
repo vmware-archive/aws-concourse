@@ -5,17 +5,16 @@ variable "aws_cert_arn" {}
 variable "rds_db_username" {}
 variable "rds_db_password" {}
 variable "environment" {}
+variable "opsman_ami" {}
 
 variable "aws_region" {
     description = "EC2 Region for the VPC"
     default = "us-east-1"
 }
 
-variable "amis" {
-    description = "AMIs by region"
-    default = {
-        us-east-1 = "ami-52c5e145" # pcf opsman 1.8.10
-    }
+variable "opsman_instance_type" {
+    description = "Instance Type for OpsMan"
+    default = "m3.large"
 }
 
 variable "amis_nat" {
@@ -79,6 +78,9 @@ variable "services_subnet_cidr_az1" {
 
 variable "nat_ip_az1" {
     default = "10.0.0.6"
+}
+variable "opsman_ip_az1" {
+    default = "10.0.0.7"
 }
 
 /*
