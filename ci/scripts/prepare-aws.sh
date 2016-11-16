@@ -1,6 +1,6 @@
 #!/bin/bash
 export PATH=/opt/terraform/terraform:$PATH
-createPrivateKey.sh "$PRIVATE_KEY"
+cat "$PRIVATE_KEY" > bosh.pem
 chmod 400 bosh.pem
 
 CWD=$(pwd)
