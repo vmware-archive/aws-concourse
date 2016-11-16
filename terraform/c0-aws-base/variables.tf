@@ -5,7 +5,6 @@ variable "aws_cert_arn" {}
 variable "rds_db_username" {}
 variable "rds_db_password" {}
 variable "environment" {}
-variable "client" {}
 
 variable "aws_region" {
     description = "EC2 Region for the VPC"
@@ -119,7 +118,7 @@ variable "nat_ip_az2" {
 
 variable "az3" {
     description = "EC2 Availability zone for the region 3"
-    default = "us-east-1c"
+    default = "us-east-1d"
 }
 variable "public_subnet_cidr_az3" {
     description = "CIDR for the Public Subnet 3"
