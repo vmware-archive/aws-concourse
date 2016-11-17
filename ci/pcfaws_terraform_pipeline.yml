@@ -2,6 +2,9 @@ groups:
 - name: prepare
   jobs:
   - aws-pcf-prepare
+- name: config-opsman
+  jobs:
+  - config-opsman
 - name: destroy
   jobs:
   - aws-pcf-destroy
@@ -30,6 +33,12 @@ resources:
     endpoint: {{S3_ENDPOINT}}
     bucket: {{S3_OUTPUT_BUCKET}}
     versioned_file: terraform.tfstate
+- name: tool-om
+  type: github-release
+  source:
+    user: pivotal-cf
+    repository: om
+    access_token: {{GITHUB_TOKEN}}
 
 jobs:
 - name: aws-pcf-prepare
@@ -52,6 +61,18 @@ jobs:
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
+
+- name: config-opsman
+  serial: true
+  plan:
+  - aggregate:
+    - get: aws-prepare-get
+  - task: config-opsman
+    file: aws-prepare-get/ci/tasks/config-opsman.yml
+    params:
+      ERT_DOMAIN: {{ERT_DOMAIN}}
+      OPSMAN_USER: {{OPSMAN_USER}}
+      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
 
 - name: aws-pcf-destroy
   serial: true

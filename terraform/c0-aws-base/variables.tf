@@ -6,39 +6,20 @@ variable "rds_db_username" {}
 variable "rds_db_password" {}
 variable "environment" {}
 variable "opsman_ami" {}
-
-variable "aws_region" {
-    description = "EC2 Region for the VPC"
-    default = "us-east-1"
-}
+variable "amis_nat" {}
+variable "aws_region" {}
+variable "az1" {}
+variable "az2" {}
+variable "az3" {}
 
 variable "opsman_instance_type" {
     description = "Instance Type for OpsMan"
     default = "m3.large"
 }
-
-variable "amis_nat" {
-    description = "NAT AMIs by region"
-    default = {
-        us-east-1 = "ami-303b1458",
-        us-west-2 = "ami-69ae8259"
-    }
-}
-variable "amis_temp_instance" {
-    description = "temp instance to run create db scripts"
-    default = {
-        us-east-1 = "ami-c8580bdf"
-    }
-}
 variable "nat_instance_type" {
     description = "Instance Type for NAT instances"
     default = "t2.medium"
 }
-variable "temp_instance_type" {
-    description = "Instance Type for Temp instances"
-    default = "t2.medium"
-}
-
 variable "db_instance_type" {
     description = "Instance Type for RDS instance"
     default = "db.m3.large"
@@ -51,10 +32,7 @@ variable "vpc_cidr" {
 /*
   Availability Zone 1
 */
-variable "az1" {
-    description = "EC2 Availability zone for the region 1"
-    default = "us-east-1a"
-}
+
 # public subnet
 variable "public_subnet_cidr_az1" {
     description = "CIDR for the Public Subnet 1"
@@ -87,10 +65,7 @@ variable "opsman_ip_az1" {
   Availability Zone 2
 */
 
-variable "az2" {
-    description = "EC2 Availability zone for the region 2"
-    default = "us-east-1b"
-}
+
 variable "public_subnet_cidr_az2" {
     description = "CIDR for the Public Subnet 2"
     default = "10.0.1.0/24"
@@ -117,11 +92,6 @@ variable "nat_ip_az2" {
 /*
   Availability Zone 3
 */
-
-variable "az3" {
-    description = "EC2 Availability zone for the region 3"
-    default = "us-east-1d"
-}
 variable "public_subnet_cidr_az3" {
     description = "CIDR for the Public Subnet 3"
     default = "10.0.2.0/24"

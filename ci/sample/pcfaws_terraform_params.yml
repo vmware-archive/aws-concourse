@@ -7,5 +7,13 @@ TF_VAR_rds_db_username: XXXXX
 TF_VAR_rds_db_password: XXXXX
 TF_VAR_environment: XXXXX
 TF_VAR_opsman_ami: XXXXX
+TF_VAR_amis_nat: XXXXX
+TF_VAR_aws_region: us-east-1
+TF_VAR_az1: us-east-1a
+TF_VAR_az2: us-east-1b
+TF_VAR_az3: us-east-1d
 S3_ENDPOINT: https://s3.amazonaws.com
 S3_OUTPUT_BUCKET: XXXX
+ERT_DOMAIN: XXXXX 
+OPSMAN_USER: admin
+OPSMAN_PASSWORD: XXXXX
