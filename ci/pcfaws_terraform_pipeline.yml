@@ -66,6 +66,7 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
+    - get: tool-om
   - task: config-opsman
     file: aws-prepare-get/ci/tasks/config-opsman.yml
     params:

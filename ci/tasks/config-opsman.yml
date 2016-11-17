@@ -7,5 +7,6 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-prepare-get
+  - name: tool-om
 run:
   path: aws-prepare-get/ci/scripts/config-opsman.sh
