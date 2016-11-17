@@ -38,7 +38,6 @@ resources:
   source:
     user: pivotal-cf
     repository: om
-    access_token: {{GITHUB_TOKEN}}
 
 jobs:
 - name: aws-pcf-prepare
