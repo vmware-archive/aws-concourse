@@ -1,4 +1,9 @@
 groups:
+- name: all
+  jobs:
+  - aws-pcf-prepare
+  - config-opsman
+  - aws-pcf-destroy
 - name: prepare
   jobs:
   - aws-pcf-prepare
