@@ -1,0 +1,94 @@
+{
+  "VPCID": "{{aws_vpc_id}}",
+  "SecurityGroupID": "{{aws_sg_id}}",
+  "KeyPairName": "{{aws_keypair_name}}",
+  "Region": "{{aws_region}}",
+  "Encrypted": false,
+  "NTPServers": "0.amazon.pool.ntp.org,1.amazon.pool.ntp.org,2.amazon.pool.ntp.org,3.amazon.pool.ntp.org",
+  "MetricsIP": "",
+  "EnableResurrector": true,
+  "EnablePostDeployScripts": false,
+  "EnableBoshRecreate": false,
+  "EnableBoshRetryDeploys": false,
+  "EnableHealthManagerPagerDuty": false,
+  "EnableHealthManagerEmail": false,
+  "S3Endpoint": "{{s3_endpoint}}",
+  "S3BucketName": "{{s3_bucket}}",
+  "S3SignatureVersion": "2",
+  "DatabaseHost": "{{rds_host}}",
+  "DatabasePort": "3306",
+  "DatabaseUser": "{{rds_user}}",
+  "Database": "{{rds_database}}",
+  "MaxThreads": "",
+  "DirectorHostname": "",
+  "AZNames": [
+    "{{aws_az1}}",
+    "{{aws_az2}}",
+    "{{aws_az3}}"
+  ],
+  "Networks": [
+    {
+      "Name": "deployment",
+      "ServiceNetwork": false,
+      "Subnets": [
+        {
+          "Name": "{{deployment_subnet_1}}",
+          "CIDR": "{{ip_prefix}.16.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.16.0-{{ip_prefix}.16.10",
+          "DNS": "{{ip_prefix}.16.2",
+          "Gateway": "{{ip_prefix}.16.1",
+          "AZName": "{{aws_az1}}"
+        },
+        {
+          "Name": "{{deployment_subnet_2}}",
+          "CIDR": "{{ip_prefix}.32.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.32.0-{{ip_prefix}.32.10",
+          "DNS": "{{ip_prefix}.32.2",
+          "Gateway": "{{ip_prefix}.32.1",
+          "AZName": "{{aws_az2}}"
+        },
+        {
+          "Name": "{{deployment_subnet_3}}",
+          "CIDR": "{{ip_prefix}.48.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.48.0-{{ip_prefix}.48.10",
+          "DNS": "{{ip_prefix}.48.2",
+          "Gateway": "{{ip_prefix}.48.1",
+          "AZName": "{{aws_az3}}"
+        }
+      ]
+    },
+    {
+      "Name": "services",
+      "ServiceNetwork": false,
+      "Subnets": [
+        {
+          "Name": "{{services_subnet_1}}",
+          "CIDR": "{{ip_prefix}.64.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.64.0-{{ip_prefix}.64.10",
+          "DNS": "{{ip_prefix}.64.2",
+          "Gateway": "{{ip_prefix}.64.1",
+          "AZName": "{{aws_az1}}"
+        },
+        {
+          "Name": "{{services_subnet_2}}",
+          "CIDR": "{{ip_prefix}.80.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.80.0-{{ip_prefix}.80.10",
+          "DNS": "{{ip_prefix}.80.2",
+          "Gateway": "{{ip_prefix}.80.1",
+          "AZName": "{{aws_az2}}"
+        },
+        {
+          "Name": "{{services_subnet_3}}",
+          "CIDR": "{{ip_prefix}.96.0/20",
+          "ReservedIPRanges": "{{ip_prefix}.96.0-{{ip_prefix}.96.10",
+          "DNS": "{{ip_prefix}.96.2",
+          "Gateway": "{{ip_prefix}.96.1",
+          "AZName": "{{aws_az1}}"
+        }
+      ]
+    }
+  ],
+  "EnableICMPChecks": false,
+  "SingletonAZ": "{{aws_az1}}",
+  "SingletonNetwork": "deployment"
+}

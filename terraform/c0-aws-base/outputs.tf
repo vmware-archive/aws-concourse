@@ -13,11 +13,14 @@ output "az2" {
 output "az3" {
     value = "${var.az3}"
 }
+output "vpc_id" {
+    value = "${aws_vpc.PcfVpc.id}"
+}
 output "vpc_cidr" {
     value = "${var.vpc_cidr}"
 }
-output "director_security_group" {
-    value = "${aws_security_group.directorSG.id}"
+output "pcf_security_group" {
+    value = "${aws_security_group.pcfSG.id}"
 }
 # s3 buckets
 output "s3_pcf_bosh" {
@@ -130,4 +133,7 @@ output "db_port" {
 }
 output "db_username" {
     value = "${aws_db_instance.pcf_rds.username}"
+}
+output "db_database" {
+    value = "${aws_db_instance.pcf_rds.name}"
 }
