@@ -44,7 +44,7 @@ resources:
 - name: tool-om
   type: github-release
   source:
-    user: pivotal-cf
+    user: c0-ops
     repository: om
 
 jobs:
@@ -93,6 +93,7 @@ jobs:
   - aggregate:
     - get: aws-prepare-get
     - get: pcfawsops-terraform-state-get
+    - get: tool-om
   - task: config-director
     file: aws-prepare-get/ci/tasks/config-director.yml
     params:
@@ -101,6 +102,7 @@ jobs:
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
       AWS_TEMPLATE: "c0-aws-base"
       AWS_KEY_NAME: {{TF_VAR_aws_key_name}}
+      PEM: {{PEM}}
       AWS_REGION: {{TF_VAR_aws_region}}
       S3_ENDPOINT: {{S3_ENDPOINT}}
       IP_PREFIX: {{IP_PREFIX}}

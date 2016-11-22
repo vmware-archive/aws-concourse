@@ -16,10 +16,6 @@ export AWS_SECRET_ACCESS_KEY=`terraform state show aws_iam_access_key.pcf_iam_us
 export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
 
 cd $CWD
-echo "=============================================================================================="
-echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
-echo "=============================================================================================="
-
 # Set JSON Config Template and inster Concourse Parameter Values
 json_file_path="aws-prepare-get/json-opsman/${AWS_TEMPLATE}"
 json_file_template="${json_file_path}/opsman-template.json"
@@ -49,4 +45,15 @@ perl -pi -e "s/{{services_subnet_2}}/${services_subnet_id_az2}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_3}}/${services_subnet_id_az3}/g" ${json_file}
 perl -pi -e "s/{{ip_prefix}}/${IP_PREFIX}/g" ${json_file}
 
-cat ${json_file}
+echo "=============================================================================================="
+echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
+echo "=============================================================================================="
+
+sudo cp tool-om/om-linux /usr/local/bin
+sudo chmod 755 /usr/local/bin/om-linux
+
+om-linux -t https://opsman.$ERT_DOMAIN -u $OPSMAN_USER -p $OPSMAN_PASSWORD -k \
+  aws -a $AWS_ACCESS_KEY_ID \
+  -s $AWS_SECRET_ACCESS_KEY \
+  -d $RDS_PASSWORD \
+  -p "$PEM" -c "$(cat ${json_file})"
