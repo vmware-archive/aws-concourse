@@ -7,6 +7,6 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-prepare-get
-  - name: tool-om
+  - name: pcfawsops-terraform-state-get
 run:
   path: aws-prepare-get/ci/scripts/config-director.sh

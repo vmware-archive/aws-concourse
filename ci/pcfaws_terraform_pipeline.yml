@@ -79,15 +79,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-    - get: pcfawsops-terraform-state-get
-  - task: config-director
-    file: aws-prepare-get/ci/tasks/config-director.yml      
-
-- name: config-director
-  serial: true
-  plan:
-  - aggregate:
-    - get: aws-prepare-get
     - get: tool-om
   - task: config-opsman
     file: aws-prepare-get/ci/tasks/config-opsman.yml
@@ -95,6 +86,15 @@ jobs:
       ERT_DOMAIN: {{ERT_DOMAIN}}
       OPSMAN_USER: {{OPSMAN_USER}}
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
+
+- name: config-director
+  serial: true
+  plan:
+  - aggregate:
+    - get: aws-prepare-get
+    - get: pcfawsops-terraform-state-get
+  - task: config-director
+    file: aws-prepare-get/ci/tasks/config-director.yml
 
 - name: aws-pcf-destroy
   serial: true
