@@ -50,7 +50,7 @@ echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
 cat $json_file
 echo "=============================================================================================="
 
-sudo cp tool-om/om-linux /usr/local/bin
+sudo cp tool-om-beta/om-linux /usr/local/bin
 sudo chmod 755 /usr/local/bin/om-linux
 
 om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -k \
@@ -58,6 +58,9 @@ om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -
   -s $AWS_SECRET_ACCESS_KEY \
   -d $RDS_PASSWORD \
   -p "$PEM" -c "$(cat ${json_file})"
+
+sudo cp tool-om/om-linux /usr/local/bin
+sudo chmod 755 /usr/local/bin/om-linux
 
 om-linux -t https://opsman.$ERT_DOMAIN -k \
        -u "$OPSMAN_USER" \

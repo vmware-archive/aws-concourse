@@ -9,5 +9,6 @@ inputs:
   - name: aws-prepare-get
   - name: pcfawsops-terraform-state-get
   - name: tool-om
+  - name: tool-om-beta
 run:
   path: aws-prepare-get/ci/scripts/config-director.sh
