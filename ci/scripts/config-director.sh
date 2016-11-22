@@ -11,8 +11,6 @@ do
   `echo "$line" | awk '{print "export "$1"="$3}'`
 done < <(terraform output)
 
-echo $az1
-
 export AWS_ACCESS_KEY_ID=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^id | awk '{print $3}'`
 export AWS_SECRET_ACCESS_KEY=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^secret | awk '{print $3}'`
 export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
@@ -29,11 +27,13 @@ json_file="${json_file_path}/opsman.json"
 
 cp ${json_file_template} ${json_file}
 
+export S3_ESCAPED=${S3_ENDPOINT//\//\\/}
+
 perl -pi -e "s/{{aws_vpc_id}}/${vpc_id}/g" ${json_file}
 perl -pi -e "s/{{aws_sg_id}}/${pcf_security_group}/g" ${json_file}
-perl -pi -e "s/{{aws_keypair_name}}/${TF_VAR_aws_key_name}/g" ${json_file}
-perl -pi -e "s/{{aws_region}}/${TF_VAR_aws_region}/g" ${json_file}
-perl -pi -e "s/{{s3_endpoint}}/${S3_ENDPOINT}/g" ${json_file}
+perl -pi -e "s/{{aws_keypair_name}}/${AWS_KEY_NAME}/g" ${json_file}
+perl -pi -e "s/{{aws_region}}/${AWS_REGION}/g" ${json_file}
+perl -pi -e "s/{{s3_endpoint}}/${S3_ESCAPED}/g" ${json_file}
 perl -pi -e "s/{{s3_bucket}}/${s3_pcf_bosh}/g" ${json_file}
 perl -pi -e "s/{{rds_host}}/${db_host}/g" ${json_file}
 perl -pi -e "s/{{rds_user}}/${db_username}/g" ${json_file}

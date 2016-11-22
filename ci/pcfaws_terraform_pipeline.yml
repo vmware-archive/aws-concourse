@@ -100,8 +100,8 @@ jobs:
       OPSMAN_USER: {{OPSMAN_USER}}
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
       AWS_TEMPLATE: "c0-aws-base"
-      TF_VAR_aws_key_name: {{TF_VAR_aws_key_name}}
-      TF_VAR_aws_region: {{TF_VAR_aws_region}}
+      AWS_KEY_NAME: {{TF_VAR_aws_key_name}}
+      AWS_REGION: {{TF_VAR_aws_region}}
       S3_ENDPOINT: {{S3_ENDPOINT}}
       IP_PREFIX: {{IP_PREFIX}}
 
