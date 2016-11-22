@@ -62,6 +62,11 @@ jobs:
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
       TF_VAR_opsman_ami: {{TF_VAR_opsman_ami}}
+      TF_VAR_amis_nat: {{TF_VAR_amis_nat}}
+      TF_VAR_aws_region: {{TF_VAR_aws_region}}
+      TF_VAR_az1: {{TF_VAR_az1}}
+      TF_VAR_az2: {{TF_VAR_az2}}
+      TF_VAR_az3: {{TF_VAR_az3}}
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
@@ -96,6 +101,11 @@ jobs:
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
       TF_VAR_opsman_ami: {{TF_VAR_opsman_ami}}
+      TF_VAR_amis_nat: {{TF_VAR_amis_nat}}
+      TF_VAR_aws_region: {{TF_VAR_aws_region}}
+      TF_VAR_az1: {{TF_VAR_az1}}
+      TF_VAR_az2: {{TF_VAR_az2}}
+      TF_VAR_az3: {{TF_VAR_az3}}
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
