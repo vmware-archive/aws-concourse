@@ -10,6 +10,9 @@ groups:
 - name: config-opsman
   jobs:
   - config-opsman
+- name: config-director
+  jobs:
+  - config-director
 - name: destroy
   jobs:
   - aws-pcf-destroy
@@ -72,6 +75,15 @@ jobs:
       file: pcfawsops-terraform-state-put/terraform.tfstate
 
 - name: config-opsman
+  serial: true
+  plan:
+  - aggregate:
+    - get: aws-prepare-get
+    - get: pcfawsops-terraform-state-get
+  - task: config-director
+    file: aws-prepare-get/ci/tasks/config-director.yml      
+
+- name: config-director
   serial: true
   plan:
   - aggregate:
