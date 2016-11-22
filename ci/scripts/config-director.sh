@@ -17,7 +17,7 @@ export AWS_ACCESS_KEY_ID=`terraform state show aws_iam_access_key.pcf_iam_user_a
 export AWS_SECRET_ACCESS_KEY=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^secret | awk '{print $3}'`
 export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
 
-
+cd $CWD
 echo "=============================================================================================="
 echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
 echo "=============================================================================================="

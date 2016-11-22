@@ -102,8 +102,8 @@ jobs:
       AWS_TEMPLATE: "c0-aws-base"
       TF_VAR_aws_key_name: {{TF_VAR_aws_key_name}}
       TF_VAR_aws_region: {{TF_VAR_aws_region}}
-      AWS_PEM: {{AWS_PEM}}
       S3_ENDPOINT: {{S3_ENDPOINT}}
+      IP_PREFIX: {{IP_PREFIX}}
 
 - name: aws-pcf-destroy
   serial: true
