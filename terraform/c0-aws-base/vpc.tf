@@ -92,7 +92,7 @@ resource "aws_security_group" "nat_instance_sg" {
 }
 # 3.2 Create NAT instance
 resource "aws_instance" "nat_az1" {
-    ami = "${var.amis_nat["${var.aws_region}"]}"
+    ami = "${var.amis_nat}"
     availability_zone = "${var.az1}"
     instance_type = "${var.nat_instance_type}"
     key_name = "${var.aws_key_name}"
@@ -155,7 +155,7 @@ resource "aws_subnet" "PcfVpcServicesSubnet_az2" {
 }
 
 resource "aws_instance" "nat_az2" {
-    ami = "${var.amis_nat["${var.aws_region}"]}"
+    ami = "${var.amis_nat}"
     availability_zone = "${var.az2}"
     instance_type = "${var.nat_instance_type}"
     key_name = "${var.aws_key_name}"
@@ -220,7 +220,7 @@ resource "aws_subnet" "PcfVpcServicesSubnet_az3" {
 
 # NAT Insance
 resource "aws_instance" "nat_az3" {
-    ami = "${var.amis_nat["${var.aws_region}"]}"
+    ami = "${var.amis_nat}"
     availability_zone = "${var.az3}"
     instance_type = "${var.nat_instance_type}"
     key_name = "${var.aws_key_name}"
