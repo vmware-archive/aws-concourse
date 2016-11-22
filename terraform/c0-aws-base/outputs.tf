@@ -20,19 +20,19 @@ output "director_security_group" {
     value = "${aws_security_group.directorSG.id}"
 }
 # s3 buckets
-output "s3_pcf-bosh" {
+output "s3_pcf_bosh" {
     value = "${aws_s3_bucket.pcf-bosh.bucket}"
 }
 output "s3_buildpacks" {
     value = "${aws_s3_bucket.pcf-buildpacks.bucket}"
 }
-output "s3_pcf-droplets" {
+output "s3_pcf_droplets" {
     value = "${aws_s3_bucket.pcf-droplets.bucket}"
 }
-output "s3_pcf-packages" {
+output "s3_pcf_packages" {
     value = "${aws_s3_bucket.pcf-packages.bucket}"
 }
-output "s3_pcf-resources" {
+output "s3_pcf_resources" {
     value = "${aws_s3_bucket.pcf-resources.bucket}"
 }
 
