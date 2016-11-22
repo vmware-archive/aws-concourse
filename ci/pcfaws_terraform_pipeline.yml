@@ -16,6 +16,9 @@ groups:
 - name: upload-ert
   jobs:
   - upload-ert
+- name: deploy-ert
+  jobs:
+  - deploy-ert
 - name: destroy
   jobs:
   - aws-pcf-destroy
@@ -159,6 +162,34 @@ jobs:
       ERT_DOMAIN: {{ERT_DOMAIN}}
       OPSMAN_USER: {{OPSMAN_USER}}
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
+
+###########################
+## Job - Deploy ERT      ##
+###########################
+- name: deploy-ert
+  serial: true
+  max_in_flight: 1
+  serial_groups: [full]
+  plan:
+  - aggregate:
+    - get: aws-prepare-get
+      trigger: true
+      passed: [upload-ert]
+    - get: tool-om
+      params:
+        globs:
+        - "om-linux"
+  - task: deploy-ert
+    file: aws-prepare-get/ci/tasks/deploy-ert.yml
+    params:
+      ERT_SSL_CERT: {{ERT_SSL_CERT}}
+      ERT_SSL_KEY: {{ERT_SSL_KEY}}
+      ERT_DOMAIN: {{ERT_DOMAIN}}
+      OPSMAN_USER: {{OPSMAN_USER}}
+      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
+      AWS_TEMPLATE: "c0-aws-base"
+      S3_ENDPOINT: {{S3_ENDPOINT}}
+      SYSLOG_HOST: {{SYSLOG_HOST}}
 
 - name: aws-pcf-destroy
   serial: true

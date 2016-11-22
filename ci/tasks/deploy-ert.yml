@@ -1,0 +1,12 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: virtmerlin/c0-worker
+inputs:
+  - name: aws-prepare-get
+  - name: tool-om
+run:
+  path: aws-prepare-get/ci/scripts/deploy-ert.sh
