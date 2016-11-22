@@ -83,7 +83,7 @@
           "ReservedIPRanges": "{{ip_prefix}}.96.0-{{ip_prefix}}.96.10",
           "DNS": "{{ip_prefix}}.96.2",
           "Gateway": "{{ip_prefix}}.96.1",
-          "AZName": "{{aws_az1}}"
+          "AZName": "{{aws_az3}}"
         }
       ]
     }
