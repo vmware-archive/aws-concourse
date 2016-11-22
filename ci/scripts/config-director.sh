@@ -47,6 +47,7 @@ perl -pi -e "s/{{ip_prefix}}/${IP_PREFIX}/g" ${json_file}
 
 echo "=============================================================================================="
 echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
+echo $json_file
 echo "=============================================================================================="
 
 sudo cp tool-om/om-linux /usr/local/bin
