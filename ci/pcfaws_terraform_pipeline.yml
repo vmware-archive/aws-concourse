@@ -3,6 +3,9 @@ groups:
   jobs:
   - aws-pcf-prepare
   - config-opsman
+  - config-director
+  - upload-ert
+  - deploy-ert
   - aws-pcf-destroy
 - name: prepare
   jobs:
