@@ -1,6 +1,15 @@
 #!/bin/bash
 set -ex
 
+#Create databases
+echo "$PEM" > pcf.pem
+chmod 0600 pcf.pem
+
+scp -i pcf.pem -o StrictHostKeyChecking=no aws-prepare-get/ci/scripts/databases.sql ubuntu@opsman.${ERT_DOMAIN}:/tmp/.
+ssh -i pcf.pem -o StrictHostKeyChecking=no ubuntu@opsman.${ERT_DOMAIN} "mysql -h $db_host -u $db_username -p$RDS_PASSWORD < /tmp/databases.sql"
+
+#Make om-linux executable
+
 sudo cp tool-om/om-linux /usr/local/bin
 sudo chmod 755 /usr/local/bin/om-linux
 

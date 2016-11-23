@@ -35,7 +35,7 @@
           "Name": "{{deployment_subnet_1}}",
           "CIDR": "{{ip_prefix}}.16.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.16.0-{{ip_prefix}}.16.10",
-          "DNS": "{{ip_prefix}}.16.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.16.1",
           "AZName": "{{aws_az1}}"
         },
@@ -43,7 +43,7 @@
           "Name": "{{deployment_subnet_2}}",
           "CIDR": "{{ip_prefix}}.32.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.32.0-{{ip_prefix}}.32.10",
-          "DNS": "{{ip_prefix}}.32.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.32.1",
           "AZName": "{{aws_az2}}"
         },
@@ -51,7 +51,7 @@
           "Name": "{{deployment_subnet_3}}",
           "CIDR": "{{ip_prefix}}.48.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.48.0-{{ip_prefix}}.48.10",
-          "DNS": "{{ip_prefix}}.48.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.48.1",
           "AZName": "{{aws_az3}}"
         }
@@ -65,7 +65,7 @@
           "Name": "{{services_subnet_1}}",
           "CIDR": "{{ip_prefix}}.64.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.64.0-{{ip_prefix}}.64.10",
-          "DNS": "{{ip_prefix}}.64.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.64.1",
           "AZName": "{{aws_az1}}"
         },
@@ -73,7 +73,7 @@
           "Name": "{{services_subnet_2}}",
           "CIDR": "{{ip_prefix}}.80.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.80.0-{{ip_prefix}}.80.10",
-          "DNS": "{{ip_prefix}}.80.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.80.1",
           "AZName": "{{aws_az2}}"
         },
@@ -81,7 +81,7 @@
           "Name": "{{services_subnet_3}}",
           "CIDR": "{{ip_prefix}}.96.0/20",
           "ReservedIPRanges": "{{ip_prefix}}.96.0-{{ip_prefix}}.96.10",
-          "DNS": "{{ip_prefix}}.96.2",
+          "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.96.1",
           "AZName": "{{aws_az3}}"
         }

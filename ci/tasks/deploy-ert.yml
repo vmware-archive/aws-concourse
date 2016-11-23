@@ -18,6 +18,7 @@ params:
   AWS_TEMPLATE:
   S3_ENDPOINT:
   SYSLOG_HOST:
+  PEM:
 
 run:
   path: aws-prepare-get/ci/scripts/deploy-ert.sh

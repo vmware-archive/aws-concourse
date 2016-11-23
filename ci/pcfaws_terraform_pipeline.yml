@@ -179,7 +179,7 @@ jobs:
     - get: aws-prepare-get
       trigger: true
       passed: [upload-ert]
-    - get: pcfawsops-terraform-state-get      
+    - get: pcfawsops-terraform-state-get
     - get: tool-om
       params:
         globs:
@@ -195,6 +195,7 @@ jobs:
       AWS_TEMPLATE: "c0-aws-base"
       S3_ENDPOINT: {{S3_ENDPOINT}}
       SYSLOG_HOST: {{SYSLOG_HOST}}
+      PEM: {{PEM}}
 
 - name: aws-pcf-destroy
   serial: true
