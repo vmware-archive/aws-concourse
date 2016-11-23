@@ -1,5 +1,8 @@
 #!/bin/bash
-set -e
+set -ex
+
+sudo cp tool-om/om-linux /usr/local/bin
+sudo chmod 755 /usr/local/bin/om-linux
 
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)

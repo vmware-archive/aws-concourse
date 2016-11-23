@@ -8,5 +8,16 @@ image_resource:
 inputs:
   - name: aws-prepare-get
   - name: tool-om
+  - name: pcfawsops-terraform-state-get
+params:
+  ERT_SSL_CERT:
+  ERT_SSL_KEY:
+  ERT_DOMAIN:
+  OPSMAN_USER:
+  OPSMAN_PASSWORD:
+  AWS_TEMPLATE:
+  S3_ENDPOINT:
+  SYSLOG_HOST:
+
 run:
   path: aws-prepare-get/ci/scripts/deploy-ert.sh

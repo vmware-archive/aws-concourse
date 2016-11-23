@@ -150,6 +150,7 @@ jobs:
     - get: aws-prepare-get
       trigger: true
       passed: [config-director]
+    - get: pcfawsops-terraform-state-get
     - get: pivnet-elastic-runtime
       trigger: false
       params:
@@ -178,6 +179,7 @@ jobs:
     - get: aws-prepare-get
       trigger: true
       passed: [upload-ert]
+    - get: pcfawsops-terraform-state-get      
     - get: tool-om
       params:
         globs:
