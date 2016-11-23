@@ -32,8 +32,8 @@ if [[ ${ERT_SSL_CERT} == "generate" ]]; then
   echo "Generating Self Signed Certs for sys.${ERT_DOMAIN} & cfapps.${ERT_DOMAIN} ..."
   echo "=============================================================================================="
   aws-prepare-get/scripts/ssl/gen_ssl_certs.sh "sys.${ERT_DOMAIN}" "apps.${ERT_DOMAIN}"
-  export pcf_ert_ssl_cert=$(cat sys.${ERT_DOMAIN}.crt)
-  export pcf_ert_ssl_key=$(cat sys.${ERT_DOMAIN}.key)
+  ERT_SSL_CERT=$(cat sys.${ERT_DOMAIN}.crt)
+  ERT_SSL_KEY=$(cat sys.${ERT_DOMAIN}.key)
 fi
 
 my_pcf_ert_ssl_cert=$(echo ${ERT_SSL_CERT} | sed 's/\s\+/\\\\r\\\\n/g' | sed 's/\\\\r\\\\nCERTIFICATE/ CERTIFICATE/g')

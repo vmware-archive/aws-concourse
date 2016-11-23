@@ -10,7 +10,7 @@
         { "name": "{{aws_zone_3}}" }
       ],
       "network": {
-        "name": "ert"
+        "name": "deployment"
       }
     }
   },
