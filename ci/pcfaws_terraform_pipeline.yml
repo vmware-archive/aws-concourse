@@ -148,8 +148,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-      trigger: true
-      passed: [config-director]
     - get: pcfawsops-terraform-state-get
     - get: pivnet-elastic-runtime
       trigger: false
@@ -195,7 +193,6 @@ jobs:
       AWS_TEMPLATE: "c0-aws-base"
       S3_ENDPOINT: {{S3_ENDPOINT}}
       SYSLOG_HOST: {{SYSLOG_HOST}}
-      PEM: {{PEM}}
 
 - name: aws-pcf-destroy
   serial: true
