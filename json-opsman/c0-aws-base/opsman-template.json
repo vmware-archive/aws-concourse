@@ -68,7 +68,7 @@
           "DNS": "{{ip_prefix}}.0.2",
           "Gateway": "{{ip_prefix}}.6.1",
           "AZName": "{{aws_az1}}"
-        },
+        }
       ]
     },
     {
