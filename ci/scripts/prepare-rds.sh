@@ -1,35 +1,22 @@
 #!/bin/bash
 set -ex
+
+echo "$PEM" > pcf.pem
+chmod 0600 pcf.pem
+
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
+pushd $CWD
+  cd aws-prepare-get/terraform/c0-aws-base/
+  cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
-if [[ -s pcfawsops-terraform-rds-state-get/rds-terraform.tfstate ]]; then
-    cp pcfawsops-terraform-rds-state-get/rds-terraform.tfstate $OUTPUT_DIR/rds-terraform.tfstate
-else
-    touch $OUTPUT_DIR/rds-terraform.tfstate
-fi
+  while read -r line
+  do
+    `echo "$line" | awk '{print "export "$1"="$3}'`
+  done < <(terraform output)
 
-cd $OUTPUT_DIR
+  export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
+popd
 
-echo "creating temp instance..."
-terraform apply
-
-#get public ip of the temp instance
-temp_instance_public_ip=$(terraform state show aws_instance.temp_az1 | grep "\bpublic_ip\b" | awk '{print $3}')
-echo "temp instance public ip = $temp_instance_public_ip"
-
-if [ -f rds-terraform.tfstate ]; then
-    scp -i temp_instance_key.pem -o StrictHostKeyChecking=no rds-terraform.tfstate ubuntu@$temp_instance_public_ip:terraform.tfstate terraform.tfstate
-fi
-
-ssh -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instance_public_ip 'chmod a+x create_database.sh && ./create_database.sh'
-
-scp -i temp_instance_key.pem -o StrictHostKeyChecking=no ubuntu@$temp_instance_public_ip:terraform.tfstate rds-terraform.tfstate
-
-cd $CWD
-cp $OUTPUT_DIR/rds-terraform.tfstate pcfawsops-terraform-rds-state-put/rds-terraform.tfstate
-
-
-echo "deleting temp instance..."
-cd $OUTPUT_DIR
-terraform destroy --force
+scp -i pcf.pem -o StrictHostKeyChecking=no aws-prepare-get/ci/scripts/databases.sql ubuntu@opsman.${ERT_DOMAIN}:/tmp/.
+ssh -i pcf.pem -o StrictHostKeyChecking=no ubuntu@opsman.${ERT_DOMAIN} "mysql -h $db_host -u $db_username -p$RDS_PASSWORD < /tmp/databases.sql"

@@ -175,13 +175,16 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-      trigger: true
-      passed: [upload-ert]
     - get: pcfawsops-terraform-state-get
     - get: tool-om
       params:
         globs:
         - "om-linux"
+  - task: prepare-rds
+    file: aws-prepare-get/ci/tasks/prepare-rds.yml
+    params:
+      PEM: {{PEM}}
+      ERT_DOMAIN: {{ERT_DOMAIN}}
   - task: deploy-ert
     file: aws-prepare-get/ci/tasks/deploy-ert.yml
     params:
