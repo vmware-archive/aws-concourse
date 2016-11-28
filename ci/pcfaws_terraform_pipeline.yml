@@ -63,11 +63,13 @@ resources:
   source:
     user: c0-ops
     repository: om
+    access_token: {{GITHUB_TOKEN}}
 - name: tool-om
   type: github-release
   source:
     user: pivotal-cf
     repository: om
+    access_token: {{GITHUB_TOKEN}}
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
