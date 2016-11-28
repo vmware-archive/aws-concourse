@@ -58,6 +58,20 @@
       ]
     },
     {
+      "Name": "infrastructure",
+      "ServiceNetwork": false,
+      "Subnets": [
+        {
+          "Name": "{{infrastructure_subnet}}",
+          "CIDR": "{{ip_prefix}}.6.0/24",
+          "ReservedIPRanges": "{{ip_prefix}}.6.0-{{ip_prefix}}.6.10",
+          "DNS": "{{ip_prefix}}.0.2",
+          "Gateway": "{{ip_prefix}}.6.1",
+          "AZName": "{{aws_az1}}"
+        },
+      ]
+    },
+    {
       "Name": "services",
       "ServiceNetwork": false,
       "Subnets": [
@@ -90,5 +104,5 @@
   ],
   "EnableICMPChecks": false,
   "SingletonAZ": "{{aws_az1}}",
-  "SingletonNetwork": "deployment"
+  "SingletonNetwork": "infrastructure"
 }

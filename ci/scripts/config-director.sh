@@ -43,6 +43,7 @@ perl -pi -e "s/{{deployment_subnet_3}}/${ert_subnet_id_az3}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_1}}/${services_subnet_id_az1}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_2}}/${services_subnet_id_az2}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_3}}/${services_subnet_id_az3}/g" ${json_file}
+perl -pi -e "s/{{infrastructure_subnet}}/${infrastructure_subnet_id_az1}/g" ${json_file}
 perl -pi -e "s/{{ip_prefix}}/${IP_PREFIX}/g" ${json_file}
 
 echo "=============================================================================================="

@@ -111,6 +111,12 @@ variable "services_subnet_cidr_az3" {
     default = "10.0.96.0/20"
 }
 
+# Services subnet
+variable "infra_subnet_cidr_az1" {
+    description = "CIDR for the infrastructure"
+    default = "10.0.6.0/24"
+}
+
 variable "nat_ip_az3" {
     default = "10.0.2.6"
 }

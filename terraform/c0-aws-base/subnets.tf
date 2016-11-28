@@ -142,3 +142,15 @@ resource "aws_subnet" "PcfVpcServicesSubnet_az3" {
         Name = "${var.environment}-PcfVpc Services Subnet AZ3"
     }
 }
+
+# Infrastructure network  - For bosh director
+resource "aws_subnet" "PcfVpcInfraSubnet_az1" {
+    vpc_id = "${aws_vpc.PcfVpc.id}"
+
+    cidr_block = "${var.infra_subnet_cidr_az1}"
+    availability_zone = "${var.az1}"
+
+    tags {
+        Name = "${var.environment}-PcfVpc Infrastructure Subnet"
+    }
+}

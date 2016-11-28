@@ -66,6 +66,10 @@ output "rds_subnet_id_az1" {
 output "services_subnet_id_az1" {
     value = "${aws_subnet.PcfVpcServicesSubnet_az1.id}"
 }
+output "infrastructure_subnet_id_az1" {
+    value = "${aws_subnet.PcfVpcInfraSubnet_az1.id}"
+}
+
 
 # AZ2
 
@@ -121,7 +125,6 @@ output "rds_subnet_id_az3" {
 output "services_subnet_id_az3" {
     value = "${aws_subnet.PcfVpcServicesSubnet_az3.id}"
 }
-
 
 # RDS info
 
