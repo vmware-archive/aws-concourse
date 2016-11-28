@@ -5,7 +5,7 @@ CWD=$(pwd)
 cd aws-prepare-get/terraform/c0-aws-base/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 terraform plan
-terraform destroy
+terraform destroy -force
 
 cd $CWD/pcfawsops-terraform-state-put
 touch terraform.tfstate
