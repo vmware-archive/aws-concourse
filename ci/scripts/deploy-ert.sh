@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 #Make om-linux executable
 
