@@ -120,3 +120,7 @@ variable "infra_subnet_cidr_az1" {
 variable "nat_ip_az3" {
     default = "10.0.2.6"
 }
+
+variable "route53_zone_id" {
+    default = "ZG7DC4PX2OYY4"
+}
