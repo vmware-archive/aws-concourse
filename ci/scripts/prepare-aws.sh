@@ -1,10 +1,10 @@
 #!/bin/bash
 set -ex
-mv /opt/terraform/terraform /usr/local/bin
+cp /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 cd aws-prepare-get/terraform/c0-aws-base/
 
-if [[ $(cat $CWD/pcfawsops-terraform-state-get/terraform.tfstate | wc -l) gt 0 ]]; then
+if [[ $(cat $CWD/pcfawsops-terraform-state-get/terraform.tfstate | wc -l) -gt 0 ]]; then
   cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 fi
 terraform plan
