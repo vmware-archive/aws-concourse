@@ -155,7 +155,7 @@ jobs:
   - aggregate:
     - get: aws-prepare-get
       trigger: true
-      passed: [config-opsman]
+      passed: [config-director]
     - get: pcfawsops-terraform-state-get
     - get: pivnet-elastic-runtime
       trigger: false
@@ -184,7 +184,7 @@ jobs:
   - aggregate:
     - get: aws-prepare-get
       trigger: true
-      passed: [config-director,upload-ert]
+      passed: [upload-ert]
     - get: pcfawsops-terraform-state-get
     - get: tool-om
       params:
