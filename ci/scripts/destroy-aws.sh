@@ -14,7 +14,7 @@ export VPC_ID=`terraform state show aws_vpc.PcfVpc | grep ^id | awk '{print $3}'
 pip install awscli
 
 instances=$(aws ec2 describe-instances --filters Name=vpc-id,Values=$VPC_ID --output=json | jq -r '.[] | .[] | .Instances | .[] | .InstanceId')
-if [ "X$instances" -nq "X" ]
+if [[ "X$instances" -ne "X" ]]
 then
   echo "instances: $instances will be deleted......"
   aws ec2 terminate-instances --instance-ids $instances
