@@ -5,7 +5,7 @@ groups:
   - config-opsman
   - config-director
   - upload-ert
-  - deploy-ert
+  #- deploy-ert
   - aws-pcf-destroy
 - name: prepare
   jobs:
@@ -19,9 +19,12 @@ groups:
 - name: upload-ert
   jobs:
   - upload-ert
-- name: deploy-ert
+- name: configure-ert
   jobs:
-  - deploy-ert
+  - configure-ert
+# - name: deploy-ert
+#   jobs:
+#   - deploy-ert
 - name: destroy
   jobs:
   - aws-pcf-destroy
@@ -187,6 +190,7 @@ jobs:
   serial_groups: [full]
   plan:
   - aggregate:
+    - get:
     - get: ert-concourse
       trigger: false
     - get: tool-om
@@ -203,8 +207,12 @@ jobs:
       pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
       pcf_ert_ssl_cert: {{ERT_SSL_CERT}}
       pcf_ert_ssl_key: {{ERT_SSL_KEY}}
-      terraform_template: {{azure_pcf_terraform_template}}
-      terraform_prefix: {{azure_terraform_prefix}}
+      terraform_template: c0-aws-base
+      terraform_prefix: {{TF_VAR_environment}}
+      bucket: {{S3_OUTPUT_BUCKET}}
+      TF_VAR_aws_access_key: {{TF_VAR_aws_access_key}}
+      TF_VAR_aws_secret_key: {{TF_VAR_aws_secret_key}}
+      TF_VAR_aws_region: {{TF_VAR_aws_region}}
 
   - task: configure-ert
     file: ert-concourse/ci/tasks/configure-ert.yml
@@ -215,8 +223,8 @@ jobs:
       pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
       pcf_ert_ssl_cert: {{ERT_SSL_CERT}}
       pcf_ert_ssl_key: {{ERT_SSL_KEY}}
-      terraform_template: {{azure_pcf_terraform_template}}
-      terraform_prefix: {{azure_terraform_prefix}}
+      terraform_template: c0-aws-base
+      terraform_prefix: {{TF_VAR_environment}}
 
 # - name: deploy-ert
 #   serial: true
