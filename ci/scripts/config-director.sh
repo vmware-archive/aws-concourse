@@ -47,7 +47,7 @@ perl -pi -e "s/{{infrastructure_subnet}}/${infrastructure_subnet_id_az1}/g" ${js
 perl -pi -e "s/{{ip_prefix}}/${IP_PREFIX}/g" ${json_file}
 
 echo "=============================================================================================="
-echo "Deploying Director @ https://opsman.$ERT_DOMAIN ..."
+echo "Configuring Director @ https://opsman.$ERT_DOMAIN ..."
 cat $json_file
 echo "=============================================================================================="
 
@@ -59,11 +59,3 @@ om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -
   -s $AWS_SECRET_ACCESS_KEY \
   -d $RDS_PASSWORD \
   -p "$PEM" -c "$(cat ${json_file})"
-
-sudo cp tool-om/om-linux /usr/local/bin
-sudo chmod 755 /usr/local/bin/om-linux
-
-om-linux -t https://opsman.$ERT_DOMAIN -k \
-       -u "$OPSMAN_USER" \
-       -p "$OPSMAN_PASSWORD" \
-  apply-changes
