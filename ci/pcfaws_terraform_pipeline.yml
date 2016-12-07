@@ -194,7 +194,7 @@ jobs:
         globs:
         - "om-linux"
   - task: upload-ert
-    file: aws-prepare-get/ci/tasks/upload-ert.yml
+    file: ert-concourse/ci/tasks/upload-ert.yml
     params:
       pcf_ert_domain: {{ERT_DOMAIN}}
       pcf_opsman_admin: {{OPSMAN_USER}}
