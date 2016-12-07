@@ -177,13 +177,13 @@ jobs:
 - name: upload-ert
   serial: true
   max_in_flight: 1
-  serial_groups: [full]
   plan:
   - aggregate:
     - get: aws-prepare-get
       trigger: true
       passed: [deploy-director]
-    - get: pcfawsops-terraform-state-get
+    - get: ert-concourse
+      trigger: false
     - get: pivnet-elastic-runtime
       trigger: false
       params:
@@ -196,9 +196,9 @@ jobs:
   - task: upload-ert
     file: aws-prepare-get/ci/tasks/upload-ert.yml
     params:
-      ERT_DOMAIN: {{ERT_DOMAIN}}
-      OPSMAN_USER: {{OPSMAN_USER}}
-      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
+      pcf_ert_domain: {{ERT_DOMAIN}}
+      pcf_opsman_admin: {{OPSMAN_USER}}
+      pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
 
 ###########################
 ## Job - Deploy ERT      ##
@@ -206,7 +206,6 @@ jobs:
 - name: configure-ert
   serial: true
   max_in_flight: 1
-  serial_groups: [full]
   plan:
   - aggregate:
     - get: ert-concourse
@@ -258,7 +257,6 @@ jobs:
 - name: deploy-ert
   serial: true
   max_in_flight: 1
-  serial_groups: [full]
   plan:
   - aggregate:
     - get: aws-prepare-get
