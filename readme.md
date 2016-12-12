@@ -88,13 +88,13 @@ Before start kicking off the pipeline, there are a few parameters need to be set
 
   * NAT Box AMI
 
-    Pipeline creates three nats box sits on each avaliablity zones
+    Pipeline creates three nats box sits on each avaliablity zone
 
     ```
     TF_VAR_amis_nat: ami-303b1458
     ```
 
-  * Regions and three availability zones
+  * Region and three availability zones
 
     ```
     TF_VAR_aws_region: us-east-1
@@ -103,13 +103,13 @@ Before start kicking off the pipeline, there are a few parameters need to be set
     TF_VAR_az3: us-east-1d
     ```
 
-  * Pivotal net Token to download tiles
+  * [Pivotal Net](https://network.pivotal.io) Token to download tiles
 
     ```
     PIVNET_TOKEN: XXXXXX
     ```
 
-  * An github access key to download github binary releases E.g. https://github.com/pivotal-cf/om
+  * A github access key to download github binary releases E.g. https://github.com/pivotal-cf/om
 
     ```
     GITHUB_TOKEN: XXXXXX
@@ -132,14 +132,13 @@ Before start kicking off the pipeline, there are a few parameters need to be set
      ERT_SSL_KEY:
     ```
 
-  * Syslog Host point to aggregate platform logs
+  * Syslog Host to aggregate platform logs
 
     ```
      SYSLOG_HOST:
     ```
 
 ## Uploading the pipeline and running it.
-### Load the pipeline to councourse
 
 ```
 cd ci
