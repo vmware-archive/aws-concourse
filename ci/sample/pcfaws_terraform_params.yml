@@ -1,20 +1,26 @@
-# variables for terraform automation
-TF_VAR_aws_access_key: XXXXX
-TF_VAR_aws_secret_key: XXXXX
-TF_VAR_aws_key_name: XXXXX
-TF_VAR_aws_cert_arn: XXXXX
-TF_VAR_rds_db_username: XXXXX
-TF_VAR_rds_db_password: XXXXX
-TF_VAR_environment: XXXXX
-TF_VAR_opsman_ami: XXXXX
-TF_VAR_amis_nat: XXXXX
-TF_VAR_aws_region: us-east-1
-TF_VAR_az1: us-east-1a
-TF_VAR_az2: us-east-1b
-TF_VAR_az3: us-east-1d
-S3_ENDPOINT: https://s3.amazonaws.com
-S3_OUTPUT_BUCKET: XXXX
-ERT_DOMAIN: XXXXX
-OPSMAN_USER: admin
-OPSMAN_PASSWORD: XXXXX
-GITHUB_TOKEN: XXXXXX
+TF_VAR_aws_access_key:
+TF_VAR_aws_secret_key:
+TF_VAR_aws_key_name:
+TF_VAR_aws_cert_arn:
+TF_VAR_rds_db_username:
+TF_VAR_rds_db_password:
+TF_VAR_environment:
+TF_VAR_opsman_ami:
+TF_VAR_amis_nat:
+TF_VAR_aws_region:
+TF_VAR_az1:
+TF_VAR_az2:
+TF_VAR_az3:
+S3_ENDPOINT:
+S3_OUTPUT_BUCKET:
+OPTMAN_DOMAIN:
+ERT_DOMAIN:
+OPSMAN_USER:
+OPSMAN_PASSWORD:
+PIVNET_TOKEN:
+GITHUB_TOKEN:
+PEM:
+IP_PREFIX:
+ERT_SSL_CERT: generate
+ERT_SSL_KEY:
+SYSLOG_HOST:
