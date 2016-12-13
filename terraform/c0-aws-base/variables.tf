@@ -121,10 +121,6 @@ variable "nat_ip_az3" {
 }
 
 variable "using_private_zone" {
-    default = "false"
-}
-
-variable "using_private_zone" {
     default = 0
 }
 
