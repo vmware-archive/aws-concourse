@@ -8,13 +8,13 @@ image_resource:
 inputs:
   - name: aws-prepare-get
   - name: pcfawsops-terraform-state-get
+  - name: ert-concourse
 outputs:
   - name: pcfawsops-terraform-state-put
 params:
   TF_VAR_aws_access_key:
   TF_VAR_aws_secret_key:
   TF_VAR_aws_key_name:
-  TF_VAR_aws_cert_arn:
   TF_VAR_rds_db_username:
   TF_VAR_rds_db_password:
   TF_VAR_environment:
@@ -23,6 +23,10 @@ params:
   TF_VAR_aws_region:
   TF_VAR_az1:
   TF_VAR_az2:
-  TF_VAR_az3:  
+  TF_VAR_az3:
+  TF_VAR_using_private_zone: true
+  pcf_ert_domain:
+  ert_ssl_cert:
+  ert_ssl_key:
 run:
   path: aws-prepare-get/ci/scripts/prepare-aws.sh

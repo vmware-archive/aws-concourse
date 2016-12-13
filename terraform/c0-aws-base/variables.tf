@@ -1,7 +1,6 @@
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
 variable "aws_key_name" {}
-variable "aws_cert_arn" {}
 variable "rds_db_username" {}
 variable "rds_db_password" {}
 variable "environment" {}
@@ -121,6 +120,13 @@ variable "nat_ip_az3" {
     default = "10.0.2.6"
 }
 
-variable "route53_zone_id" {
-    default = "ZG7DC4PX2OYY4"
+variable "using_private_zone" {
+    default = "false"
+}
+
+variable "using_private_zone" {
+    default = "false"
+}
+
+variable "pcf_ert_domain" {
 }

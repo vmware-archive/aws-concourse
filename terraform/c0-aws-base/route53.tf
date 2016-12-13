@@ -1,5 +1,11 @@
+resource "aws_route53_zone" "pcf_zone" {
+   count = "${var.using_private_zone == "true" ? 1 : 0}"
+   name= "${var.pcf_ert_domain}"
+}
+
 resource "aws_route53_record" "opsman" {
-  zone_id = "${var.route53_zone_id}"
+  count = "${var.using_private_zone == "true" ? 1 : 0}"
+  zone_id = "${aws_route53_zone.pcf_zone.zone_id}"
   name = "opsman"
   type = "A"
   ttl = "900"
@@ -7,7 +13,8 @@ resource "aws_route53_record" "opsman" {
 }
 
 resource "aws_route53_record" "apps_wild_card" {
-  zone_id = "${var.route53_zone_id}"
+  count = "${var.using_private_zone == "true" ? 1 : 0}"
+  zone_id = "${aws_route53_zone.pcf_zone.zone_id}"
   name = "*.apps"
   type = "CNAME"
   ttl = "900"
@@ -15,7 +22,8 @@ resource "aws_route53_record" "apps_wild_card" {
 }
 
 resource "aws_route53_record" "system_wild_card" {
-  zone_id = "${var.route53_zone_id}"
+  count = "${var.using_private_zone == "true" ? 1 : 0}"
+  zone_id = "${aws_route53_zone.pcf_zone.zone_id}"
   name = "*.sys"
   type = "CNAME"
   ttl = "900"
@@ -23,7 +31,8 @@ resource "aws_route53_record" "system_wild_card" {
 }
 
 resource "aws_route53_record" "ssh" {
-  zone_id = "${var.route53_zone_id}"
+  count = "${var.using_private_zone == "true" ? 1 : 0}"
+  zone_id = "${aws_route53_zone.pcf_zone.zone_id}"
   name = "ssh.sys"
   type = "CNAME"
   ttl = "900"
