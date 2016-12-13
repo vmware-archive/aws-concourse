@@ -1,9 +1,14 @@
 #!/bin/bash
 set -e
-mv /opt/terraform/terraform /usr/local/bin
+cp /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 cd aws-prepare-get/terraform/c0-aws-base/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
+
+#cert.pem and cert.key have to exists before destroying. While the content does not matter
+touch cert.pem
+touch cert.key
+
 
 export AWS_ACCESS_KEY_ID=${TF_VAR_aws_access_key}
 export AWS_SECRET_ACCESS_KEY=${TF_VAR_aws_secret_key}
