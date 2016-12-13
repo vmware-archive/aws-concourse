@@ -23,7 +23,7 @@ params:
   TF_VAR_az1:
   TF_VAR_az2:
   TF_VAR_az3:
-  TF_VAR_using_private_zone: true
+  TF_VAR_create_dns_zone: true
   TF_VAR_pcf_ert_domain:
 run:
   path: aws-prepare-get/ci/scripts/destroy-aws.sh

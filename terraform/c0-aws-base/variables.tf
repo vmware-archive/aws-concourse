@@ -120,9 +120,11 @@ variable "nat_ip_az3" {
     default = "10.0.2.6"
 }
 
-variable "using_private_zone" {
+variable "create_dns_zone" {
     default = 0
 }
 
-variable "pcf_ert_domain" {
+variable "pcf_ert_domain" {}
+variable "name_server_records" {
+    default = []
 }
