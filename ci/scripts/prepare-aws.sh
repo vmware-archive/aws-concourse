@@ -9,7 +9,7 @@ if [[ ${ert_ssl_cert} == "generate" ]]; then
   echo "=============================================================================================="
   echo "Generating Self Signed Certs for sys.${pcf_ert_domain} & cfapps.${pcf_ert_domain} ..."
   echo "=============================================================================================="
-  ert-concourse/scripts/ssl/gen_ssl_certs.sh "sys.${pcf_ert_domain}" "cfapps.${pcf_ert_domain}"
+  $CWD/ert-concourse/scripts/ssl/gen_ssl_certs.sh "sys.${pcf_ert_domain}" "cfapps.${pcf_ert_domain}"
   cp sys.${pcf_ert_domain}.crt cert.pem
   cp sys.${pcf_ert_domain}.key cert.key
 else
