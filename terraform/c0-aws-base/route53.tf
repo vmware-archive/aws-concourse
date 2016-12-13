@@ -1,5 +1,6 @@
 resource "aws_route53_zone" "pcf_zone" {
    count = "${var.using_private_zone}"
+   vpc_id = "${aws_vpc.PcfVpc.id}"
    name= "${var.pcf_ert_domain}"
 }
 
