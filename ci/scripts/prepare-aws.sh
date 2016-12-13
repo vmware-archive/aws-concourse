@@ -5,7 +5,7 @@ CWD=$(pwd)
 cd aws-prepare-get/terraform/c0-aws-base/
 
 # Either Generate a certificate or load a customer based certificate. Look at load_balancers.tf
-if [[ ${pcf_ert_ssl_cert} == "generate" ]]; then
+if [[ ${ert_ssl_cert} == "generate" ]]; then
   echo "=============================================================================================="
   echo "Generating Self Signed Certs for sys.${pcf_ert_domain} & cfapps.${pcf_ert_domain} ..."
   echo "=============================================================================================="

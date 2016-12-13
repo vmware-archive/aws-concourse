@@ -119,10 +119,10 @@ jobs:
       TF_VAR_pcf_ert_domain: {{ERT_DOMAIN}}
       ert_ssl_cert: {{ERT_SSL_CERT}}
       ert_ssl_key: {{ERT_SSL_KEY}}
-  - put: pcfawsops-terraform-state-put
-    params:
-      file: pcfawsops-terraform-state-put/terraform.tfstate
-
+    ensure:
+      put: pcfawsops-terraform-state-put
+      params:
+        file: pcfawsops-terraform-state-put/terraform.tfstate
 - name: config-opsman
   serial: true
   plan:
@@ -304,6 +304,7 @@ jobs:
       TF_VAR_pcf_ert_domain: {{ERT_DOMAIN}}
       ert_ssl_cert: {{ERT_SSL_CERT}}
       ert_ssl_key: {{ERT_SSL_KEY}}
-  - put: pcfawsops-terraform-state-put
-    params:
-      file: pcfawsops-terraform-state-put/terraform.tfstate
+    ensure:
+      put: pcfawsops-terraform-state-put
+      params:
+        file: pcfawsops-terraform-state-put/terraform.tfstate
