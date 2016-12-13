@@ -1,7 +1,7 @@
 resource "aws_iam_server_certificate" "pcf_cert" {
   name = "pcf_cert"
   certificate_body = "${file("cert.pem")}"
-  private_key = "${file("key.pem")}"
+  private_key = "${file("cert.key")}"
   lifecycle {
     create_before_destroy = true
   }
