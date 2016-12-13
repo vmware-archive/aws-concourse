@@ -115,7 +115,7 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
-      TF_VAR_using_private_zone: {{TF_VAR_using_private_zone}}
+      TF_VAR_using_private_zone: 1
       pcf_ert_domain: {{ERT_DOMAIN}}
       ert_ssl_cert: {{ERT_SSL_CERT}}
       ert_ssl_key: {{ERT_SSL_KEY}}

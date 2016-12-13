@@ -125,7 +125,7 @@ variable "using_private_zone" {
 }
 
 variable "using_private_zone" {
-    default = "false"
+    default = 0
 }
 
 variable "pcf_ert_domain" {
