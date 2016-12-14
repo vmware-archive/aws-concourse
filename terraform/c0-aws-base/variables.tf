@@ -126,5 +126,5 @@ variable "create_dns_zone" {
 
 variable "pcf_ert_domain" {}
 variable "name_server_records" {
-    default = []
+    default = ""
 }
