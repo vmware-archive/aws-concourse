@@ -115,9 +115,11 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
-  - put: pcfawsops-terraform-state-put
-    params:
-      file: pcfawsops-terraform-state-put/terraform.tfstate
+      TF_VAR_route53_zone_id: {{ROUTE_53_ZONE_ID}}
+    ensure:
+      put: pcfawsops-terraform-state-put
+      params:
+        file: pcfawsops-terraform-state-put/terraform.tfstate
 
 - name: config-opsman
   serial: true
@@ -297,6 +299,11 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
+      TF_VAR_route53_zone_id: {{ROUTE_53_ZONE_ID}}
+    ensure:
+      put: pcfawsops-terraform-state-put
+      params:
+        file: pcfawsops-terraform-state-put/terraform.tfstate
   - put: pcfawsops-terraform-state-put
     params:
       file: pcfawsops-terraform-state-put/terraform.tfstate
