@@ -23,6 +23,7 @@ fi
 
 #Destroy the plan
 terraform plan
+set +e
 terraform destroy -force
 
 cd $CWD/pcfawsops-terraform-state-put
