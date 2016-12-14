@@ -1,12 +1,3 @@
-resource "aws_iam_server_certificate" "pcf_cert" {
-  name = "pcf_cert"
-  certificate_body = "${file("cert.pem")}"
-  private_key = "${file("cert.key")}"
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_elb" "PcfHttpElb" {
   name = "${var.environment}-Pcf-Http-Elb"
   subnets = ["${aws_subnet.PcfVpcPublicSubnet_az1.id}","${aws_subnet.PcfVpcPublicSubnet_az2.id}","${aws_subnet.PcfVpcPublicSubnet_az3.id}"]
@@ -17,14 +8,14 @@ resource "aws_elb" "PcfHttpElb" {
     instance_protocol = "HTTP"
     lb_port = 443
     lb_protocol = "HTTPS"
-    ssl_certificate_id = "${aws_iam_server_certificate.pcf_cert.arn}"
+    ssl_certificate_id = "${var.aws_cert_arn}"
   }
   listener {
     instance_port = 80
     instance_protocol = "TCP"
     lb_port = 4443
     lb_protocol = "SSL"
-    ssl_certificate_id = "${aws_iam_server_certificate.pcf_cert.arn}"
+    ssl_certificate_id = "${var.aws_cert_arn}"
   }
   health_check {
     target = "TCP:80"

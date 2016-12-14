@@ -97,7 +97,6 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: ert-concourse
     - get: aws-prepare-get
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-prepare
@@ -106,6 +105,7 @@ jobs:
       TF_VAR_aws_access_key: {{TF_VAR_aws_access_key}}
       TF_VAR_aws_secret_key: {{TF_VAR_aws_secret_key}}
       TF_VAR_aws_key_name: {{TF_VAR_aws_key_name}}
+      TF_VAR_aws_cert_arn: {{TF_VAR_aws_cert_arn}}
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
@@ -115,15 +115,10 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
-      TF_VAR_create_dns_zone: {{CREATE_DNS_ZONE}}
-      TF_VAR_pcf_ert_domain: {{ERT_DOMAIN}}
-      TF_VAR_name_server_records: {{NAME_SERVER_RECORDS}}
-      ert_ssl_cert: {{ERT_SSL_CERT}}
-      ert_ssl_key: {{ERT_SSL_KEY}}
-    ensure:
-      put: pcfawsops-terraform-state-put
-      params:
-        file: pcfawsops-terraform-state-put/terraform.tfstate
+  - put: pcfawsops-terraform-state-put
+    params:
+      file: pcfawsops-terraform-state-put/terraform.tfstate
+
 - name: config-opsman
   serial: true
   plan:
@@ -292,6 +287,7 @@ jobs:
       TF_VAR_aws_access_key: {{TF_VAR_aws_access_key}}
       TF_VAR_aws_secret_key: {{TF_VAR_aws_secret_key}}
       TF_VAR_aws_key_name: {{TF_VAR_aws_key_name}}
+      TF_VAR_aws_cert_arn: {{TF_VAR_aws_cert_arn}}
       TF_VAR_rds_db_username: {{TF_VAR_rds_db_username}}
       TF_VAR_rds_db_password: {{TF_VAR_rds_db_password}}
       TF_VAR_environment: {{TF_VAR_environment}}
@@ -301,11 +297,6 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
-      TF_VAR_create_dns_zone: {{CREATE_DNS_ZONE}}
-      TF_VAR_pcf_ert_domain: {{ERT_DOMAIN}}
-      ert_ssl_cert: {{ERT_SSL_CERT}}
-      ert_ssl_key: {{ERT_SSL_KEY}}
-    ensure:
-      put: pcfawsops-terraform-state-put
-      params:
-        file: pcfawsops-terraform-state-put/terraform.tfstate
+  - put: pcfawsops-terraform-state-put
+    params:
+      file: pcfawsops-terraform-state-put/terraform.tfstate
