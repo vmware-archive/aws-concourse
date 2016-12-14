@@ -301,7 +301,7 @@ jobs:
       TF_VAR_az1: {{TF_VAR_az1}}
       TF_VAR_az2: {{TF_VAR_az2}}
       TF_VAR_az3: {{TF_VAR_az3}}
-      TF_VAR_create_dns_zone: {{TF_VAR_create_dns_zone}}
+      TF_VAR_create_dns_zone: {{CREATE_DNS_ZONE}}
       TF_VAR_pcf_ert_domain: {{ERT_DOMAIN}}
       ert_ssl_cert: {{ERT_SSL_CERT}}
       ert_ssl_key: {{ERT_SSL_KEY}}

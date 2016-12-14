@@ -5,8 +5,8 @@ resource "aws_route53_zone" "pcf_zone" {
 
 resource "aws_route53_record" "pcf-ns" {
     count = "${var.create_dns_zone}"
-    zone_id = "${aws_route53_zone.dev.zone_id}"
-    name = "dev.example.com"
+    zone_id = "${aws_route53_zone.pcf_zone.zone_id}"
+    name = "${var.pcf_ert_domain}"
     type = "NS"
     ttl = "30"
     records = ["${split(",", var.name_server_records)}"]
