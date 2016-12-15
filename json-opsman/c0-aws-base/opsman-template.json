@@ -33,26 +33,26 @@
       "Subnets": [
         {
           "Name": "{{deployment_subnet_1}}",
-          "CIDR": "{{ip_prefix}}.16.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.16.0-{{ip_prefix}}.16.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.16.1",
+          "CIDR": "{{deployment_subnet_1_cidr}}",
+          "ReservedIPRanges": "{{deployment_subnet_1_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{deployment_subnet_1_gw}}",
           "AZName": "{{aws_az1}}"
         },
         {
           "Name": "{{deployment_subnet_2}}",
-          "CIDR": "{{ip_prefix}}.32.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.32.0-{{ip_prefix}}.32.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.32.1",
+          "CIDR": "{{deployment_subnet_2_cidr}}",
+          "ReservedIPRanges": "{{deployment_subnet_2_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{deployment_subnet_2_gw}}",
           "AZName": "{{aws_az2}}"
         },
         {
           "Name": "{{deployment_subnet_3}}",
-          "CIDR": "{{ip_prefix}}.48.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.48.0-{{ip_prefix}}.48.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.48.1",
+          "CIDR": "{{deployment_subnet_3_cidr}}",
+          "ReservedIPRanges": "{{deployment_subnet_3_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{deployment_subnet_3_gw}}",
           "AZName": "{{aws_az3}}"
         }
       ]
@@ -62,11 +62,11 @@
       "ServiceNetwork": false,
       "Subnets": [
         {
-          "Name": "{{infrastructure_subnet}}",
-          "CIDR": "{{ip_prefix}}.6.0/24",
-          "ReservedIPRanges": "{{ip_prefix}}.6.0-{{ip_prefix}}.6.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.6.1",
+          "Name": "{{infra_subnet}}",
+          "CIDR": "{{infra_subnet_cidr}}",
+          "ReservedIPRanges": "{{infra_subnet_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{infra_subnet_gw}}",
           "AZName": "{{aws_az1}}"
         }
       ]
@@ -77,28 +77,28 @@
       "Subnets": [
         {
           "Name": "{{services_subnet_1}}",
-          "CIDR": "{{ip_prefix}}.64.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.64.0-{{ip_prefix}}.64.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.64.1",
+          "CIDR": "{{services_subnet_1_cidr",
+          "ReservedIPRanges": "{{services_subnet_1_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{services_subnet_1_gw}}",
           "AZName": "{{aws_az1}}"
         },
         {
           "Name": "{{services_subnet_2}}",
-          "CIDR": "{{ip_prefix}}.80.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.80.0-{{ip_prefix}}.80.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.80.1",
+          "CIDR": "{{services_subnet_2_cidr",
+          "ReservedIPRanges": "{{services_subnet_2_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{services_subnet_2_gw}}",
           "AZName": "{{aws_az2}}"
         },
         {
           "Name": "{{services_subnet_3}}",
-          "CIDR": "{{ip_prefix}}.96.0/20",
-          "ReservedIPRanges": "{{ip_prefix}}.96.0-{{ip_prefix}}.96.10",
-          "DNS": "{{ip_prefix}}.0.2",
-          "Gateway": "{{ip_prefix}}.96.1",
+          "CIDR": "{{services_subnet_3_cidr",
+          "ReservedIPRanges": "{{services_subnet_3_reserved}}",
+          "DNS": "{{vpc_dns}}",
+          "Gateway": "{{services_subnet_3_gw}}",
           "AZName": "{{aws_az3}}"
-        }
+        },
       ]
     }
   ],
