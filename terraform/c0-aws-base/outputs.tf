@@ -41,7 +41,7 @@ output "s3_pcf_resources" {
 
 # DNS
 output "dns" {
-    value = "cidrhost(${var.vpc_cidr}, 2)"
+    value = "${cidrhost("${var.vpc_cidr}", 2)}"
 }
 
 # AZ1
@@ -56,7 +56,7 @@ output "ert_subnet_cidr_az1" {
 }
 
 output "ert_subnet_gw_az1" {
-    value = "cidrhost(${var.ert_subnet_cidr_az1}, 1)"
+    value = "${cidrhost("${var.ert_subnet_cidr_az1}", 1)}"
 }
 
 output "rds_subnet_cidr_az1" {
@@ -68,7 +68,7 @@ output "services_subnet_cidr_az1" {
 }
 
 output "services_subnet_gw_az1" {
-    value = "cidrhost(${var.services_subnet_cidr_az1}, 1)"
+    value = "${cidrhost("${var.services_subnet_cidr_az1}", 1)}"
 }
 
 output "public_subnet_id_az1" {
@@ -87,7 +87,7 @@ output "infra_subnet_id_az1" {
     value = "${aws_subnet.PcfVpcInfraSubnet_az1.id}"
 }
 output "infra_subnet_gw_az1" {
-    value = "cidrhost(${var.infra_subnet_cidr_az1}, 1)"
+    value = "${cidrhost("${var.infra_subnet_cidr_az1}", 1)}"
 }
 
 
@@ -100,7 +100,7 @@ output "ert_subnet_cidr_az2" {
     value = "${var.ert_subnet_cidr_az2}"
 }
 output "ert_subnet_gw_az2" {
-    value = "cidrhost(${var.ert_subnet_cidr_az2}, 1)"
+    value = "${cidrhost("${var.ert_subnet_cidr_az2}", 1)}"
 }
 
 output "rds_subnet_cidr_az2" {
@@ -110,7 +110,7 @@ output "services_subnet_cidr_az2" {
     value = "${var.services_subnet_cidr_az2}"
 }
 output "services_subnet_gw_az2" {
-    value = "cidrhost(${var.services_subnet_cidr_az2}, 1)"
+    value = "${cidrhost("${var.services_subnet_cidr_az2}", 1)}"
 }
 output "public_subnet_id_az2" {
     value = "${aws_subnet.PcfVpcPublicSubnet_az2.id}"
@@ -135,7 +135,7 @@ output "ert_subnet_cidr_az3" {
 }
 
 output "ert_subnet_gw_az3" {
-    value = "cidrhost(${var.ert_subnet_cidr_az3}, 1)"
+    value = "${cidrhost("${var.ert_subnet_cidr_az3}", 1)}"
 }
 
 output "rds_subnet_cidr_az3" {
@@ -149,7 +149,7 @@ output "public_subnet_id_az3" {
     value = "${aws_subnet.PcfVpcPublicSubnet_az3.id}"
 }
 output "services_subnet_gw_az3" {
-    value = "cidrhost(${var.services_subnet_cidr_az3}, 1)"
+    value = "${cidrhost("${services_subnet_cidr_az3}", 1)}"
 }
 output "ert_subnet_id_az3" {
     value = "${aws_subnet.PcfVpcErtSubnet_az3.id}"
