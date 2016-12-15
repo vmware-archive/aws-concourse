@@ -55,10 +55,10 @@ variable "services_subnet_cidr_az1" {
 }
 
 variable "nat_ip_az1" {
-    default = "10.0.0.6"
+    default = "cidrhost(${var.public_subnet_cidr_az1}, 6)"
 }
 variable "opsman_ip_az1" {
-    default = "10.0.0.7"
+    default = "cidrhost(${var.public_subnet_cidr_az1}, 7)"
 }
 
 /*
@@ -86,7 +86,7 @@ variable "services_subnet_cidr_az2" {
 }
 
 variable "nat_ip_az2" {
-    default = "10.0.1.6"
+    default = "cidrhost(${var.public_subnet_cidr_az2}, 6)"
 }
 
 /*
@@ -118,7 +118,7 @@ variable "infra_subnet_cidr_az1" {
 }
 
 variable "nat_ip_az3" {
-    default = "10.0.2.6"
+    default = "cidrhost(${var.public_subnet_cidr_az3}, 6)"
 }
 
 variable "route53_zone_id" {
