@@ -130,6 +130,10 @@ jobs:
       TF_VAR_rds_subnet_cidr_az1: {{TF_VAR_rds_subnet_cidr_az1}}
       TF_VAR_rds_subnet_cidr_az2: {{TF_VAR_rds_subnet_cidr_az2}}
       TF_VAR_rds_subnet_cidr_az3: {{TF_VAR_rds_subnet_cidr_az3}}
+      TF_VAR_opsman_ip_az1: {{TF_VAR_opsman_ip_az1}}
+      TF_VAR_nat_ip_az1: {{TF_VAR_nat_ip_az1}}
+      TF_VAR_nat_ip_az2: {{TF_VAR_nat_ip_az2}}
+      TF_VAR_nat_ip_az3: {{TF_VAR_nat_ip_az3}}
     ensure:
       put: pcfawsops-terraform-state-put
       params:
@@ -333,7 +337,7 @@ jobs:
       TF_VAR_infra_subnet_cidr_az1: {{TF_VAR_infra_subnet_cidr_az1}}
       TF_VAR_rds_subnet_cidr_az1: {{TF_VAR_rds_subnet_cidr_az1}}
       TF_VAR_rds_subnet_cidr_az2: {{TF_VAR_rds_subnet_cidr_az2}}
-      TF_VAR_rds_subnet_cidr_az3: {{TF_VAR_rds_subnet_cidr_az3}}      
+      TF_VAR_rds_subnet_cidr_az3: {{TF_VAR_rds_subnet_cidr_az3}}
     ensure:
       put: pcfawsops-terraform-state-put
       params:
