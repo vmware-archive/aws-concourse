@@ -159,8 +159,8 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-      trigger: true
-      passed: [config-opsman]
+      #trigger: true
+      #passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om-beta
   - task: config-director

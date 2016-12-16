@@ -93,7 +93,7 @@
         },
         {
           "Name": "{{services_subnet_3}}",
-          "CIDR": "{{services_subnet_3_cidr||",
+          "CIDR": "{{services_subnet_3_cidr}}",
           "ReservedIPRanges": "{{services_subnet_3_reserved}}",
           "DNS": "{{vpc_dns}}",
           "Gateway": "{{services_subnet_3_gw}}",
