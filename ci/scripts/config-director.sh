@@ -40,37 +40,37 @@ perl -pi -e "s/{{aws_az3}}/${az3}/g" ${json_file}
 perl -pi -e "s/{{vpc_dns}}/${dns}/g" ${json_file}
 
 perl -pi -e "s/{{deployment_subnet_1}}/${ert_subnet_id_az1}/g" ${json_file}
-perl -pi -e "s/{{deployment_subnet_1_cidr}}/${ert_subnet_cidr_az1}/g" ${json_file}
+perl -pi -e "s|{{deployment_subnet_1_cidr}}|${ert_subnet_cidr_az1}|g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_1_reserved}}/${ert_subnet_reserved_ranges_z1}/g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_1_gw}}/${ert_subnet_gw_az1}/g" ${json_file}
 
 perl -pi -e "s/{{deployment_subnet_2}}/${ert_subnet_id_az2}/g" ${json_file}
-perl -pi -e "s/{{deployment_subnet_2_cidr}}/${ert_subnet_cidr_az2}/g" ${json_file}
+perl -pi -e "s|{{deployment_subnet_2_cidr}}|${ert_subnet_cidr_az2}|g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_2_reserved}}/${ert_subnet_reserved_ranges_z2}/g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_2_gw}}/${ert_subnet_gw_az2}/g" ${json_file}
 
 perl -pi -e "s/{{deployment_subnet_3}}/${ert_subnet_id_az3}/g" ${json_file}
-perl -pi -e "s/{{deployment_subnet_3_cidr}}/${ert_subnet_cidr_az3}/g" ${json_file}
+perl -pi -e "s|{{deployment_subnet_3_cidr}}|${ert_subnet_cidr_az3}|g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_3_reserved}}/${ert_subnet_reserved_ranges_z3}/g" ${json_file}
 perl -pi -e "s/{{deployment_subnet_3_gw}}/${ert_subnet_gw_az3}/g" ${json_file}
 
 perl -pi -e "s/{{services_subnet_1}}/${services_subnet_id_az1}/g" ${json_file}
-perl -pi -e "s/{{services_subnet_1_cidr}}/${services_subnet_cidr_az1}/g" ${json_file}
+perl -pi -e "s|{{services_subnet_1_cidr}}|${services_subnet_cidr_az1}|g" ${json_file}
 perl -pi -e "s/{{services_subnet_1_reserved}}/${services_subnet_reserved_ranges_z1}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_1_gw}}/${services_subnet_gw_az1}/g" ${json_file}
 
 perl -pi -e "s/{{services_subnet_2}}/${services_subnet_id_az2}/g" ${json_file}
-perl -pi -e "s/{{services_subnet_2_cidr}}/${services_subnet_cidr_az2}/g" ${json_file}
+perl -pi -e "s|{{services_subnet_2_cidr}}|${services_subnet_cidr_az2}|g" ${json_file}
 perl -pi -e "s/{{services_subnet_2_reserved}}/${services_subnet_reserved_ranges_z2}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_2_gw}}/${services_subnet_gw_az2}/g" ${json_file}
 
 perl -pi -e "s/{{services_subnet_3}}/${services_subnet_id_az3}/g" ${json_file}
-perl -pi -e "s/{{services_subnet_3_cidr}}/${services_subnet_cidr_az3}/g" ${json_file}
+perl -pi -e "s|{{services_subnet_3_cidr}}|${services_subnet_cidr_az3}|g" ${json_file}
 perl -pi -e "s/{{services_subnet_3_reserved}}/${services_subnet_reserved_ranges_z3}/g" ${json_file}
 perl -pi -e "s/{{services_subnet_3_gw}}/${services_subnet_gw_az3}/g" ${json_file}
 
 perl -pi -e "s/{{infra_subnet_1}}/${infra_subnet_id_az1}/g" ${json_file}
-perl -pi -e "s/{{infra_subnet_1_cidr}}/${infra_subnet_cidr_az1}/g" ${json_file}
+perl -pi -e "s|{{infra_subnet_1_cidr}}|${infra_subnet_cidr_az1}|g" ${json_file}
 perl -pi -e "s/{{infra_subnet_1_reserved}}/${infra_subnet_reserved_ranges_z1}/g" ${json_file}
 perl -pi -e "s/{{infra_subnet_1_gw}}/${infra_subnet_gw_az1}/g" ${json_file}
 
