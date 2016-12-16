@@ -77,7 +77,7 @@
       "Subnets": [
         {
           "Name": "{{services_subnet_1}}",
-          "CIDR": "{{services_subnet_1_cidr",
+          "CIDR": "{{services_subnet_1_cidr}}",
           "ReservedIPRanges": "{{services_subnet_1_reserved}}",
           "DNS": "{{vpc_dns}}",
           "Gateway": "{{services_subnet_1_gw}}",
@@ -85,7 +85,7 @@
         },
         {
           "Name": "{{services_subnet_2}}",
-          "CIDR": "{{services_subnet_2_cidr",
+          "CIDR": "{{services_subnet_2_cidr}}",
           "ReservedIPRanges": "{{services_subnet_2_reserved}}",
           "DNS": "{{vpc_dns}}",
           "Gateway": "{{services_subnet_2_gw}}",
@@ -93,12 +93,12 @@
         },
         {
           "Name": "{{services_subnet_3}}",
-          "CIDR": "{{services_subnet_3_cidr",
+          "CIDR": "{{services_subnet_3_cidr||",
           "ReservedIPRanges": "{{services_subnet_3_reserved}}",
           "DNS": "{{vpc_dns}}",
           "Gateway": "{{services_subnet_3_gw}}",
           "AZName": "{{aws_az3}}"
-        },
+        }
       ]
     }
   ],
