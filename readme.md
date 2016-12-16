@@ -103,6 +103,44 @@ Before start kicking off the pipeline, there are a few parameters need to be set
     TF_VAR_az3: us-east-1d
     ```
 
+  * IP configuration
+
+    Pipeline uses four types of network: Public, Elastic Runtime, Services and RDS and Infrastructure networks
+
+    * Public Network: Ops manager and Nat boxes who needs public internet accessible through internet gateway
+    * Elastic Runtime network: Cloud Foundry components, **three subnets on three AZs to achieve HA**
+    * Services network: Deploy PCF tile services, **three subnets on three AZs to achieve HA**
+    * RDS network: Deploy RDS databases, **three subnets on three AZs to achieve HA**
+    * Infrastructure network: Deploy Bosh director
+
+    ```
+    TF_VAR_vpc_cidr: 192.168.0.0/16
+    TF_VAR_public_subnet_cidr_az1: 192.168.0.0/24
+    TF_VAR_public_subnet_cidr_az2: 192.168.1.0/24
+    TF_VAR_public_subnet_cidr_az3: 192.168.2.0/24
+    TF_VAR_ert_subnet_cidr_az1: 192.168.16.0/20
+    ert_subnet_reserved_ranges_z1: 192.168.16.0 - 192.168.16.10
+    TF_VAR_ert_subnet_cidr_az2: 192.168.32.0/20
+    ert_subnet_reserved_ranges_z2: 192.168.32.0 - 192.168.32.10
+    TF_VAR_ert_subnet_cidr_az3: 192.168.48.0/20
+    ert_subnet_reserved_ranges_z3: 192.168.48.0 - 192.168.48.10
+    TF_VAR_services_subnet_cidr_az1: 192.168.64.0/20
+    services_subnet_reserved_ranges_z1: 192.168.64.0 - 192.168.64.10
+    TF_VAR_services_subnet_cidr_az2: 192.168.80.0/20
+    services_subnet_reserved_ranges_z2: 192.168.80.0 - 192.168.80.10
+    TF_VAR_services_subnet_cidr_az3: 192.168.96.0/20
+    services_subnet_reserved_ranges_z3: 192.168.96.0 - 192.168.96.10
+    TF_VAR_infra_subnet_cidr_az1: 192.168.6.0/24
+    infra_subnet_reserved_ranges_z1: 192.168.6.0 - 192.168.6.10
+    TF_VAR_rds_subnet_cidr_az1: 192.168.3.0/24
+    TF_VAR_rds_subnet_cidr_az2: 192.168.4.0/24
+    TF_VAR_rds_subnet_cidr_az3: 192.168.5.0/24
+    TF_VAR_opsman_ip_az1: 192.168.0.7
+    TF_VAR_nat_ip_az1: 192.168.0.6
+    TF_VAR_nat_ip_az2: 192.168.1.6
+    TF_VAR_nat_ip_az3: 192.168.2.6
+    ```
+
   * [Pivotal Net](https://network.pivotal.io) Token to download tiles
 
     ```
