@@ -87,7 +87,7 @@ output "infra_subnet_id_az1" {
     value = "${aws_subnet.PcfVpcInfraSubnet_az1.id}"
 }
 output "infra_subnet_cidr_az1" {
-    value = "${aws_subnet.PcfVpcInfraSubnet_az1.id}"
+    value = "${var.infra_subnet_cidr_az1}"
 }
 output "infra_subnet_gw_az1" {
     value = "${cidrhost("${var.infra_subnet_cidr_az1}", 1)}"
