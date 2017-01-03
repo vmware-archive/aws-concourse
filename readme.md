@@ -88,7 +88,7 @@ Before start kicking off the pipeline, there are a few parameters need to be set
 
   * NAT Box AMI
 
-    Pipeline creates three nats box sits on each avaliablity zone
+    Pipeline creates three nat boxes across all availability zones
 
     ```
     TF_VAR_amis_nat: ami-303b1458
