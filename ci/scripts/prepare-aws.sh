@@ -8,6 +8,6 @@ if [[ $(cat $CWD/pcfawsops-terraform-state-get/terraform.tfstate | wc -l) -gt 0 
   cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 fi
 terraform plan
-set +e
 terraform apply
+
 cp terraform.tfstate $CWD/pcfawsops-terraform-state-put/terraform.tfstate
