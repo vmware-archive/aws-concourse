@@ -1,3 +1,5 @@
 ci/pcfaws_terraform_params.yml
 *tfstate*
 apply.sh
+*.DS_Store
+/params

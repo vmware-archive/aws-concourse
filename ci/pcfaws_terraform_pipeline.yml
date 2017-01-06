@@ -305,7 +305,8 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-      passed: [aws-pcf-prepare]
+      passed: [deploy-ert]
+      trigger: true
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-destroy
     file: aws-prepare-get/ci/tasks/destroy-aws.yml
