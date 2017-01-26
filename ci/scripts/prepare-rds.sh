@@ -2,7 +2,7 @@
 set -e
 
 echo "$PEM" > pcf.pem
-chmod 0600 pcf.pem
+chmod 0400 pcf.pem
 
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
