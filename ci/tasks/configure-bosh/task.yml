@@ -6,7 +6,7 @@ image_resource:
   source: {repository: cloudfoundry/cflinuxfs2}
 
 inputs:
-  - name: pcf-releng-ci
+  - name: aws-prepare-get
     path: go/src/github.com/c0-ops/aws-concourse
   - name: terraform_output
   - name: bosh_configuration

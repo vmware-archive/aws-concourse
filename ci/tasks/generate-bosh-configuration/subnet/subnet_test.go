@@ -3,7 +3,7 @@ package subnet_test
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/pivotal-cf/pcf-releng-ci/tasks/om/generate-bosh-configuration/subnet"
+	"github.com/c0-ops/aws-concourse/ci/tasks/generate-bosh-configuration/subnet"
 )
 
 var _ = Describe("Subnet", func() {

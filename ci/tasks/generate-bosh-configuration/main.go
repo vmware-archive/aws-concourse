@@ -8,7 +8,7 @@ import (
 
 	"github.com/Jeffail/gabs"
 	"github.com/aditya87/hummus"
-	"github.com/pivotal-cf/pcf-releng-ci/tasks/om/generate-bosh-configuration/subnet"
+	"github.com/c0-ops/aws-concourse/ci/tasks/generate-bosh-configuration/subnet"
 )
 
 var (

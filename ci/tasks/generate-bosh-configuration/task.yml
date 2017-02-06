@@ -6,7 +6,7 @@ image_resource:
   source: {repository: pivotalcfreleng/golang}
 
 inputs:
-  - name: pcf-releng-ci
+  - name: aws-prepare-get
     path: go/src/github.com/c0-ops/aws-concourse
   - name: terraform_output
 
