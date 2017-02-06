@@ -8,6 +8,6 @@ image_resource:
 inputs:
   - name: aws-prepare-get
   - name: pcfawsops-terraform-state-get
-  - name: tool-om-beta
+  - name: tool-om
 run:
   path: aws-prepare-get/ci/scripts/config-director.sh

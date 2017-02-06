@@ -66,12 +66,6 @@ resources:
     endpoint: {{S3_ENDPOINT}}
     bucket: {{S3_OUTPUT_BUCKET}}
     versioned_file: terraform.tfstate
-- name: tool-om-beta
-  type: github-release
-  source:
-    user: c0-ops
-    repository: om
-    access_token: {{GITHUB_TOKEN}}
 - name: tool-om
   type: github-release
   source:
@@ -162,7 +156,7 @@ jobs:
       trigger: true
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
-    - get: tool-om-beta
+    - get: tool-om
   - task: config-director
     file: aws-prepare-get/ci/tasks/config-director.yml
     params:
