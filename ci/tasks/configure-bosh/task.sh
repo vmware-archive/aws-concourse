@@ -1,6 +1,9 @@
 #!/bin/bash -exu
 
 function main() {
+  chmod +x tool-om/om-linux
+  CMD_PATH="tool-om/om-linux"
+
   local cwd="$1"
 
   local opsman_dns
@@ -38,7 +41,7 @@ function main() {
     bosh_config_flags+=(--network-assignment "${network_assignment}")
   fi
 
-  om --target "https://${opsman_dns}" \
+  ./${CMD_PATH} --target "https://${opsman_dns}" \
      --skip-ssl-validation \
      --username "${OPSMAN_USERNAME}" \
      --password "${OPSMAN_PASSWORD}" \
