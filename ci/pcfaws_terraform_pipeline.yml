@@ -72,6 +72,11 @@ resources:
     user: pivotal-cf
     repository: om
     access_token: {{GITHUB_TOKEN}}
+- name: tool-om-beta
+  type: git
+  source:
+    uri: https://github.com/calebwashburn/om.git
+    branch: master
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
@@ -156,7 +161,7 @@ jobs:
       trigger: true
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
-    - get: tool-om
+    - get: tool-om-beta
   - task: config-director
     file: aws-prepare-get/ci/tasks/config-director.yml
     params:

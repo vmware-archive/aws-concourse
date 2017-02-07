@@ -79,7 +79,7 @@ echo "Configuring Director @ https://opsman.$ERT_DOMAIN ..."
 cat $json_file
 echo "=============================================================================================="
 
-sudo cp tool-om/om-linux /usr/local/bin
+sudo cp tool-om-beta/om-linux /usr/local/bin
 sudo chmod 755 /usr/local/bin/om-linux
 
 om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -k \
