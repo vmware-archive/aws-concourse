@@ -73,10 +73,11 @@ resources:
     repository: om
     access_token: {{GITHUB_TOKEN}}
 - name: tool-om-beta
-  type: git
+  type: github-release
   source:
-    uri: https://github.com/calebwashburn/om.git
-    branch: master
+    user: c0-ops
+    repository: om
+    access_token: {{GITHUB_TOKEN}}
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
@@ -162,6 +163,7 @@ jobs:
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om-beta
+      version: { tag: '0.17-beta.0' }
   - task: config-director
     file: aws-prepare-get/ci/tasks/config-director.yml
     params:
