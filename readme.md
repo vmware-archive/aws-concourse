@@ -58,6 +58,7 @@ Before start kicking off the pipeline, there are a few parameters need to be set
 
 * Versioned s3 bucket to store terraform state files.
 
+  Upload an empty file named "terraform.tfstate" into this S3 bucket
   ```
     S3_ENDPOINT: https://s3.amazonaws.com
     S3_OUTPUT_BUCKET: terraform-state-c0
@@ -171,7 +172,7 @@ Before start kicking off the pipeline, there are a few parameters need to be set
      ERT_SSL_KEY:
     ```
 
-  * Syslog Host to aggregate platform logs
+  * Syslog Host to aggregate platform logs (optional)
 
     ```
      SYSLOG_HOST:
