@@ -5,6 +5,7 @@ groups:
   - config-opsman
   - config-director
   - deploy-director
+  - import-stemcell
   - upload-ert
   - configure-ert
   - deploy-ert
@@ -21,6 +22,9 @@ groups:
 - name: deploy-director
   jobs:
   - deploy-director
+- name: import-stemcell
+  jobs:
+  - import-stemcell
 - name: upload-ert
   jobs:
   - upload-ert
@@ -91,6 +95,20 @@ resources:
   source:
     uri: https://github.com/c0-ops/ert-concourse.git
     branch: master
+- name: pcf-pipelines
+  type: git
+  source:
+    uri: git@github.com:c0-ops/pcf-pipelines
+    branch: master
+    private_key: {{git_private_key}}
+- name: stemcell-downloader
+  type: github-release
+  source:
+    user: c0-ops
+    repository: pcf-product-stemcell-downloader
+    access_token: {{GITHUB_TOKEN}}
+    globs:
+    - stemcell-downloader-linux
 
 jobs:
 - name: aws-pcf-prepare
@@ -198,6 +216,33 @@ jobs:
       pcf_opsman_admin: {{OPSMAN_USER}}
       pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
 
+- name: import-stemcell
+  plan:
+  - aggregate:
+    - get: aws-prepare-get
+      trigger: true
+      passed: [deploy-director]
+    - get: pcf-pipelines
+    - get: tool-om
+      params:
+        globs: [om-linux]
+    - get: stemcell-downloader
+      params:
+        globs: [stemcell-downloader-linux]
+    - get: pivnet-product
+      resource: pivnet-elastic-runtime
+      params:
+        globs:
+        - "*pivotal"
+  - task: upload-stemcell
+    file: pcf-pipelines/tasks/upload-stemcell/task.yml
+    params:
+      PRODUCT: cf
+      IAAS_TYPE: aws
+      OPSMAN_USERNAME: {{OPSMAN_USER}}
+      OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
+      OPSMAN_URI: {{OPSMAN_URI}}
+
 ###########################
 ## Job - Upload ERT      ##
 ###########################
@@ -208,7 +253,7 @@ jobs:
   - aggregate:
     - get: aws-prepare-get
       trigger: true
-      passed: [deploy-director]
+      passed: [import-stemcell]
     - get: ert-concourse
       trigger: false
     - get: pivnet-elastic-runtime
