@@ -26,18 +26,6 @@ Before start kicking off the pipeline, there are a few parameters need to be set
      ERT_DOMAIN: pivotal-c0.com
    ```
 
-* Decide a domain for ops manager e.g pivotal-c0.com. The pipeline will use prefix opsman for OPS Manager FQDN
-
-    ```
-    opsman.pivotal-c0.com
-    ```
-
-    ```
-    Params:
-      OPTMAN_DOMAIN: pivotal-c0.com
-    ```
-
-
 * Upload a Cloud Foundry wild card certificate as server certificate to AWS [Upload Certificate ](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html#upload-server-certificate)
 
   ```
