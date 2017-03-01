@@ -39,7 +39,6 @@ groups:
   - aws-pcf-destroy
 
 resource_types:
-
 - name: pivnet
   type: docker-image
   source:
@@ -52,6 +51,7 @@ resources:
   source:
     branch: master
     uri: https://github.com/c0-ops/aws-concourse.git
+
 - name: pcfawsops-terraform-state-put
   type: s3
   source:
@@ -61,6 +61,7 @@ resources:
     endpoint: {{S3_ENDPOINT}}
     bucket: {{S3_OUTPUT_BUCKET}}
     versioned_file: terraform.tfstate
+
 - name: pcfawsops-terraform-state-get
   type: s3
   source:
@@ -70,18 +71,21 @@ resources:
     endpoint: {{S3_ENDPOINT}}
     bucket: {{S3_OUTPUT_BUCKET}}
     versioned_file: terraform.tfstate
+
 - name: tool-om
   type: github-release
   source:
     user: pivotal-cf
     repository: om
     access_token: {{GITHUB_TOKEN}}
+
 - name: tool-om-beta
   type: github-release
   source:
     user: c0-ops
     repository: om
     access_token: {{GITHUB_TOKEN}}
+
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
@@ -90,17 +94,20 @@ resources:
     product_slug: elastic-runtime
     product_version: 1\.9\..*
     sort_by: semver
+
 - name: ert-concourse
   type: git
   source:
     uri: https://github.com/c0-ops/ert-concourse.git
     branch: master
+
 - name: pcf-pipelines
   type: git
   source:
     uri: git@github.com:c0-ops/pcf-pipelines
     branch: master
     private_key: {{git_private_key}}
+
 - name: stemcell-downloader
   type: github-release
   source:
@@ -243,9 +250,6 @@ jobs:
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
       OPSMAN_URI: {{OPSMAN_URI}}
 
-###########################
-## Job - Upload ERT      ##
-###########################
 - name: upload-ert
   serial: true
   max_in_flight: 1
@@ -272,9 +276,6 @@ jobs:
       pcf_opsman_admin: {{OPSMAN_USER}}
       pcf_opsman_admin_passwd: {{OPSMAN_PASSWORD}}
 
-###########################
-## Job - Deploy ERT      ##
-###########################
 - name: configure-ert
   serial: true
   max_in_flight: 1
