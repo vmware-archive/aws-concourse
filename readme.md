@@ -159,12 +159,6 @@ Before start kicking off the pipeline, there are a few parameters need to be set
      ERT_SSL_KEY:
     ```
 
-  * Syslog Host to aggregate platform logs
-
-    ```
-     SYSLOG_HOST:
-    ```
-
 ## Uploading the pipeline and running it.
 
 ```
