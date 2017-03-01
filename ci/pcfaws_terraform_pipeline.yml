@@ -46,7 +46,7 @@ resource_types:
     tag: v0.26.1
 
 resources:
-- name: aws-prepare-get
+- name: aws-concourse
   type: git
   source:
     branch: master
@@ -122,10 +122,10 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-prepare
-    file: aws-prepare-get/ci/tasks/prepare-aws.yml
+    file: aws-concourse/ci/tasks/prepare-aws.yml
     params:
       TF_VAR_aws_access_key: {{TF_VAR_aws_access_key}}
       TF_VAR_aws_secret_key: {{TF_VAR_aws_secret_key}}
@@ -168,12 +168,12 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [aws-pcf-prepare]
     - get: tool-om
   - task: config-opsman
-    file: aws-prepare-get/ci/tasks/config-opsman.yml
+    file: aws-concourse/ci/tasks/config-opsman.yml
     params:
       ERT_DOMAIN: {{ERT_DOMAIN}}
       OPSMAN_USER: {{OPSMAN_USER}}
@@ -183,14 +183,14 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om-beta
       version: { tag: '0.17-beta.0' }
   - task: config-director
-    file: aws-prepare-get/ci/tasks/config-director.yml
+    file: aws-concourse/ci/tasks/config-director.yml
     params:
       ERT_DOMAIN: {{ERT_DOMAIN}}
       OPSMAN_USER: {{OPSMAN_USER}}
@@ -212,12 +212,12 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [config-director]
     - get: tool-om
   - task: deploy-director
-    file: aws-prepare-get/ci/tasks/deploy-director.yml
+    file: aws-concourse/ci/tasks/deploy-director.yml
     params:
       pcf_ert_domain: {{ERT_DOMAIN}}
       pcf_opsman_admin: {{OPSMAN_USER}}
@@ -226,7 +226,7 @@ jobs:
 - name: import-stemcell
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [deploy-director]
     - get: pcf-pipelines
@@ -255,7 +255,7 @@ jobs:
   max_in_flight: 1
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [import-stemcell]
     - get: ert-concourse
@@ -287,13 +287,13 @@ jobs:
       params:
         globs:
         - "om-linux"
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [upload-ert]
     - get: pcfawsops-terraform-state-get
 
   - task: prepare-rds
-    file: aws-prepare-get/ci/tasks/prepare-rds.yml
+    file: aws-concourse/ci/tasks/prepare-rds.yml
     params:
       PEM: {{PEM}}
       ERT_DOMAIN: {{ERT_DOMAIN}}
@@ -332,7 +332,7 @@ jobs:
   max_in_flight: 1
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       trigger: true
       passed: [configure-ert]
     - get: ert-concourse
@@ -351,12 +351,12 @@ jobs:
   serial: true
   plan:
   - aggregate:
-    - get: aws-prepare-get
+    - get: aws-concourse
       passed: [deploy-ert]
       trigger: true
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-destroy
-    file: aws-prepare-get/ci/tasks/destroy-aws.yml
+    file: aws-concourse/ci/tasks/destroy-aws.yml
     params:
       TF_VAR_aws_access_key: {{TF_VAR_aws_access_key}}
       TF_VAR_aws_secret_key: {{TF_VAR_aws_secret_key}}

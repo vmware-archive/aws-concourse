@@ -7,7 +7,7 @@ chmod 0600 pcf.pem
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 pushd $CWD
-  cd aws-prepare-get/terraform/c0-aws-base/
+  cd aws-concourse/terraform/c0-aws-base/
   cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
   while read -r line
@@ -18,5 +18,5 @@ pushd $CWD
   export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
 popd
 
-scp -i pcf.pem -o StrictHostKeyChecking=no aws-prepare-get/ci/scripts/databases.sql ubuntu@opsman.${ERT_DOMAIN}:/tmp/.
+scp -i pcf.pem -o StrictHostKeyChecking=no aws-concourse/ci/scripts/databases.sql ubuntu@opsman.${ERT_DOMAIN}:/tmp/.
 ssh -i pcf.pem -o StrictHostKeyChecking=no ubuntu@opsman.${ERT_DOMAIN} "mysql -h $db_host -u $db_username -p$RDS_PASSWORD < /tmp/databases.sql"

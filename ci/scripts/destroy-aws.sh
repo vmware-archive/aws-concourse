@@ -2,7 +2,7 @@
 set -e
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
-cd aws-prepare-get/terraform/c0-aws-base/
+cd aws-concourse/terraform/c0-aws-base/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
 export AWS_ACCESS_KEY_ID=${TF_VAR_aws_access_key}

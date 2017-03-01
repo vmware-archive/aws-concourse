@@ -3,7 +3,7 @@ set -ex
 
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
-cd aws-prepare-get/terraform/c0-aws-base/
+cd aws-concourse/terraform/c0-aws-base/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
 while read -r line
@@ -17,7 +17,7 @@ export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^passwo
 
 cd $CWD
 # Set JSON Config Template and inster Concourse Parameter Values
-json_file_path="aws-prepare-get/json-opsman/${AWS_TEMPLATE}"
+json_file_path="aws-concourse/json-opsman/${AWS_TEMPLATE}"
 json_file_template="${json_file_path}/opsman-template.json"
 json_file="${json_file_path}/opsman.json"
 
