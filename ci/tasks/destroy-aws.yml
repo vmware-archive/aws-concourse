@@ -20,6 +20,7 @@ params:
   TF_VAR_environment:
   TF_VAR_opsman_ami:
   TF_VAR_amis_nat:
+  TF_VAR_route53_zone_id:
   TF_VAR_aws_region:
   TF_VAR_az1:
   TF_VAR_az2:
