@@ -7,6 +7,7 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-concourse
+  - name: pcfawsops-terraform-state-get
 outputs:
   - name: pcfawsops-terraform-state-put
 params:
