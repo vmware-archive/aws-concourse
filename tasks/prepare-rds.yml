@@ -12,4 +12,4 @@ params:
   PEM:
   ERT_DOMAIN:
 run:
-  path: aws-concourse/ci/scripts/prepare-rds.sh
+  path: aws-concourse/scripts/prepare-rds.sh

@@ -9,4 +9,4 @@ inputs:
   - name: aws-concourse
   - name: tool-om
 run:
-  path: aws-concourse/ci/scripts/deploy-director.sh
+  path: aws-concourse/scripts/config-opsman.sh

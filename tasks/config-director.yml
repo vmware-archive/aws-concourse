@@ -7,6 +7,7 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-concourse
-  - name: tool-om
+  - name: pcfawsops-terraform-state-get
+  - name: tool-om-beta
 run:
-  path: aws-concourse/ci/scripts/config-opsman.sh
+  path: aws-concourse/scripts/config-director.sh

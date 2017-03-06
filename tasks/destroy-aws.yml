@@ -26,4 +26,4 @@ params:
   TF_VAR_az2:
   TF_VAR_az3:
 run:
-  path: aws-concourse/ci/scripts/destroy-aws.sh
+  path: aws-concourse/scripts/destroy-aws.sh

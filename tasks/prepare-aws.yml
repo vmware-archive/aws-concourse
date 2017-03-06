@@ -26,4 +26,4 @@ params:
   TF_VAR_az3:  
   TF_VAR_route53_zone_id:
 run:
-  path: aws-concourse/ci/scripts/prepare-aws.sh
+  path: aws-concourse/scripts/prepare-aws.sh
