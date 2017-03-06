@@ -3,7 +3,7 @@ set -ex
 
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
-cd aws-concourse/terraform/c0-aws-base/
+cd aws-concourse/terraform/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
 while read -r line

@@ -7,7 +7,7 @@ chmod 0600 pcf.pem
 mv /opt/terraform/terraform /usr/local/bin
 CWD=$(pwd)
 pushd $CWD
-  cd aws-concourse/terraform/c0-aws-base/
+  cd aws-concourse/terraform/
   cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .
 
   while read -r line
