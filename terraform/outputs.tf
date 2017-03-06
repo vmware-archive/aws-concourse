@@ -178,8 +178,3 @@ output "db_username" {
 output "db_database" {
     value = "${aws_db_instance.pcf_rds.name}"
 }
-
-# Public IPs
-output "opsman_ip" {
-    value = "${aws_eip.opsman.public_ip}"
-}
