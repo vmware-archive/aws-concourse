@@ -147,6 +147,7 @@ jobs:
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om-beta
+      globs: [om-linux]
       version: { tag: '0.17-beta.0' }
   - task: config-director
     file: aws-concourse/tasks/config-director.yml
