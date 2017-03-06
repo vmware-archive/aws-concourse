@@ -82,7 +82,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-    - get: pcfawsops-terraform-state-get
   - task: aws-pcf-prepare
     file: aws-concourse/ci/tasks/prepare-aws.yml
     params:
