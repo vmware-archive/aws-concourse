@@ -70,11 +70,9 @@ resources:
 - name: stemcell-downloader
   type: github-release
   source:
-    user: c0-ops
+    user: pivotal-cf
     repository: pcf-product-stemcell-downloader
     access_token: {{GITHUB_TOKEN}}
-    globs:
-    - stemcell-downloader-linux
 
 jobs:
 - name: aws-pcf-prepare
