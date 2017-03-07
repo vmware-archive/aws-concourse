@@ -217,10 +217,8 @@ jobs:
       trigger: true
       passed: [import-stemcell]
     - get: ert-concourse
-      trigger: false
     - get: pivnet-elastic-runtime
       passed: [import-stemcell]
-      trigger: false
       params:
         globs:
         - "*pivotal"
@@ -241,7 +239,6 @@ jobs:
   plan:
   - aggregate:
     - get: ert-concourse
-      trigger: false
     - get: tool-om
       params:
         globs:
