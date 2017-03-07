@@ -219,6 +219,7 @@ jobs:
     - get: ert-concourse
       trigger: false
     - get: pivnet-elastic-runtime
+      passed: [import-stemcell]
       trigger: false
       params:
         globs:
