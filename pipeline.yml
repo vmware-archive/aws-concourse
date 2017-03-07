@@ -10,7 +10,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/c0-ops/aws-concourse.git
+    uri: https://github.com/pivotal-cf/aws-concourse.git
 
 - name: pcfawsops-terraform-state-put
   type: s3
@@ -64,7 +64,7 @@ resources:
 - name: pcf-pipelines
   type: git
   source:
-    uri: https://github.com/c0-ops/pcf-pipelines
+    uri: https://github.com/pivotal-cf/pcf-pipelines
     branch: master
 
 - name: stemcell-downloader
