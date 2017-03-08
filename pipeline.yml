@@ -309,7 +309,6 @@ jobs:
   - aggregate:
     - get: aws-concourse
       passed: [deploy-ert]
-      trigger: true
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-destroy
     file: aws-concourse/tasks/destroy-aws.yml
