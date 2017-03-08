@@ -1,6 +1,11 @@
 ---
 platform: linux
 
+image_resource:
+  type: docker-image
+  source:
+    repository: busybox
+
 inputs:
   - name: aws-concourse
   - name: pcfawsops-terraform-state-get
