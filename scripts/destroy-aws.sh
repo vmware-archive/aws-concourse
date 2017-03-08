@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
-mv /opt/terraform/terraform /usr/local/bin
+
+unzip terraform/terraform*.zip -d /usr/local/bin
+chmod +x /usr/local/bin/terraform
+
 CWD=$(pwd)
 cd aws-concourse/terraform/
 cp $CWD/pcfawsops-terraform-state-get/terraform.tfstate .

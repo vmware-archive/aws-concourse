@@ -5,6 +5,12 @@ resource_types:
     repository: pivotalcf/pivnet-resource
     tag: v0.26.1
 
+- name: remote-file-resource
+  type: docker-image
+  source:
+    repository: krishicks/remote-file-resource
+    tag: latest
+
 resources:
 - name: aws-concourse
   type: git
@@ -73,6 +79,11 @@ resources:
     user: pivotal-cf
     repository: pcf-product-stemcell-downloader
     access_token: {{GITHUB_TOKEN}}
+
+- name: terraform
+  type: remote-file-resource
+  source:
+    uri: https://releases.hashicorp.com/terraform/0.8.8/terraform_0.8.8_linux_amd64.zip
 
 jobs:
 - name: aws-pcf-prepare
