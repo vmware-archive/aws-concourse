@@ -93,7 +93,7 @@ Before start kicking off the pipeline, there are a few parameters need to be set
 
   * IP configuration
 
-    Pipeline uses four types of network: Public, Elastic Runtime, Services and RDS and Infrastructure networks
+    Pipeline uses five types of network: Public, Elastic Runtime, Services and RDS and Infrastructure networks
 
     * Public Network: Ops manager and Nat boxes who needs public internet accessible through internet gateway
     * Elastic Runtime network: Cloud Foundry components, **three subnets on three AZs to achieve HA**
