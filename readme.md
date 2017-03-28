@@ -3,7 +3,7 @@
 
 ## Prerequisites
 
-Before start kicking off the pipeline, there are a few parameters need to be set. Here is a sample parameters file [sample_file](pcfaws_terraform_params.yml)
+Before start kicking off the pipeline, there are a few parameters need to be set. Here is a sample parameters file [sample_file](params.yml.sample)
 
 * An admin account to provision AWS resources (Networks, Load Balancers ... )
 
