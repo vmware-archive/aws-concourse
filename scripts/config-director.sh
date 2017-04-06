@@ -20,7 +20,7 @@ cd $CWD
 export S3_ESCAPED=${S3_ENDPOINT//\//\\/}
 
 
-sudo cp tool-om-beta/om-linux /usr/local/bin
+sudo cp tool-om/om-linux /usr/local/bin
 sudo chmod 755 /usr/local/bin/om-linux
 
 IAAS_CONFIGURATION=$(cat <<-EOF
