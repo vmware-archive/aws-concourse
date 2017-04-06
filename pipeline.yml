@@ -10,7 +10,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/pivotal-cf/aws-concourse.git
+    uri: https://github.com/jtgammon/aws-concourse.git
 
 - name: pcfawsops-terraform-state-put
   type: s3
