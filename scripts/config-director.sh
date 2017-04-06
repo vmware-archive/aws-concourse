@@ -57,15 +57,15 @@ NETWORK_CONFIGURATION=$(cat <<-EOF
           "cidr": "${ert_subnet_cidr_az2}",
           "reserved_ip_ranges": "${ert_subnet_reserved_ranges_z2}",
           "dns": "${dns}",
-          "gateway": "${ert_subnet_gw_az1}",
+          "gateway": "${ert_subnet_gw_az2}",
           "availability_zones": [  "${az2}"  ]
         },
         {
           "iaas_identifier": "${ert_subnet_id_az3}",
           "cidr": "${ert_subnet_cidr_az3}",
           "reserved_ip_ranges": "${ert_subnet_reserved_ranges_z3}",
-          "dns": "${DNS}",
-          "gateway": "${ert_subnet_gw_az1}",
+          "dns": "${dns}",
+          "gateway": "${ert_subnet_gw_az3}",
           "availability_zones": [  "${az3}"  ]
         }
       ]
