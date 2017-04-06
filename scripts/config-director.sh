@@ -39,79 +39,81 @@ EOF
 
 NETWORK_CONFIGURATION=$(cat <<-EOF
 {
-      "Name": "deployment",
-      "ServiceNetwork": false,
-      "Subnets": [
+  "icmp_checks_enabled": false,
+  "networks": [
+      {
+      "name": "deployment",
+      "subnets": [
         {
-          "Name": "${ert_subnet_id_az1}",
+          "iaas_identifier": "${ert_subnet_id_az1}",
           "cidr": "${ert_subnet_cidr_az1}",
           "reserved_ip_ranges": "${ert_subnet_reserved_ranges_z1}",
           "dns": "${dns}",
           "gateway": "${ert_subnet_gw_az1}",
-          "availability_zones": "${az1}"
+          "availability_zones": [  "${az1}"  ]
         },
         {
-          "Name": "${ert_subnet_id_az2}",
+          "iaas_identifier": "${ert_subnet_id_az2}",
           "cidr": "${ert_subnet_cidr_az2}",
           "reserved_ip_ranges": "${ert_subnet_reserved_ranges_z2}",
           "dns": "${dns}",
           "gateway": "${ert_subnet_gw_az1}",
-          "availability_zones": "${az2}"
+          "availability_zones": [  "${az2}"  ]
         },
         {
-          "Name": "${ert_subnet_id_az3}",
+          "iaas_identifier": "${ert_subnet_id_az3}",
           "cidr": "${ert_subnet_cidr_az3}",
           "reserved_ip_ranges": "${ert_subnet_reserved_ranges_z3}",
           "dns": "${DNS}",
           "gateway": "${ert_subnet_gw_az1}",
-          "availability_zones": "${az3}"
+          "availability_zones": [  "${az3}"  ]
         }
       ]
     },
     {
-      "Name": "infrastructure",
-      "ServiceNetwork": false,
-      "Subnets": [
+      "name": "infrastructure",
+      "subnets": [
         {
-          "Name": "${infra_subnet_id_az1}",
+          "iaas_identifier": "${infra_subnet_id_az1}",
           "cidr": "${infra_subnet_cidr_az1}",
           "reserved_ip_ranges": "${infra_subnet_reserved_ranges_z1}",
           "dns": "${dns}",
           "gateway": "${infra_subnet_gw_az1}",
-          "availability_zones": "${az1}"
+          "availability_zones": [   "${az1}"   ]
         }
       ]
     },
     {
-      "Name": "services",
-      "ServiceNetwork": false,
-      "Subnets": [
+      "name": "services",
+      "subnets": [
         {
-          "Name": "${services_subnet_id_az1}",
+          "iaas_identifier": "${services_subnet_id_az1}",
           "cidr": "${services_subnet_cidr_az1}",
           "reserved_ip_ranges": "${services_subnet_reserved_ranges_z1}",
           "dns": "${dns}",
           "gateway": "${services_subnet_gw_az1}",
-          "availability_zones": "${az1}"
+          "availability_zones": [   "${az1}"   ]
         },
         {
-          "Name": "${services_subnet_id_az2}",
+          "iaas_identifier": "${services_subnet_id_az2}",
           "cidr": "${services_subnet_cidr_az2}",
           "reserved_ip_ranges": "${services_subnet_reserved_ranges_z2}",
           "dns": "${dns}",
           "gateway": "${services_subnet_gw_az2}",
-          "availability_zones": "${az2}"
+          "availability_zones": [   "${az2}"   ]
         },
         {
-          "Name": "${services_subnet_id_az3}",
+          "iaas_identifier": "${services_subnet_id_az3}",
           "cidr": "${services_subnet_cidr_az3}",
           "reserved_ip_ranges": "${services_subnet_reserved_ranges_z3}",
           "dns": "${dns}",
           "gateway": "${services_subnet_gw_az3}",
-          "availability_zones": "${az3}"
+          "availability_zones": [   "${az3}"   ]
         }
       ]
     }
+  ]
+}
 EOF
 )
 
