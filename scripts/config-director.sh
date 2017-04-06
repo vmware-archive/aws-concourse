@@ -25,8 +25,8 @@ sudo chmod 755 /usr/local/bin/om-linux
 
 IAAS_CONFIGURATION=$(cat <<-EOF
 {
-"access_key_id": ${AWS_ACCESS_KEY_ID},
-"secret_access_key": ${AWS_SECRET_ACCESS_KEY},
+"access_key_id": "${AWS_ACCESS_KEY_ID}",
+"secret_access_key": "${AWS_SECRET_ACCESS_KEY}",
 "vpc_id": "${vpc_id}",
 "security_group": "${pcf_security_group}",
 "key_pair_name": "${AWS_KEY_NAME}",
