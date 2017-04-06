@@ -39,13 +39,6 @@ resources:
     repository: om
     access_token: {{GITHUB_TOKEN}}
 
-- name: tool-om-beta
-  type: github-release
-  source:
-    user: c0-ops
-    repository: om
-    access_token: {{GITHUB_TOKEN}}
-
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
@@ -144,9 +137,7 @@ jobs:
       trigger: true
       passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
-    - get: tool-om-beta
-      globs: [om-linux]
-      version: { tag: '0.17-beta.0' }
+    - get: tool-om
   - task: config-director
     file: aws-concourse/tasks/config-director.yml
     params:

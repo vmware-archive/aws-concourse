@@ -8,6 +8,6 @@ image_resource:
 inputs:
   - name: aws-concourse
   - name: pcfawsops-terraform-state-get
-  - name: tool-om-beta
+  - name: tool-om
 run:
   path: aws-concourse/scripts/config-director.sh
