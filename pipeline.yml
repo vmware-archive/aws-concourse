@@ -134,8 +134,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-      trigger: true
-      passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om
   - task: config-director
@@ -162,8 +160,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-      trigger: true
-      passed: [config-director]
     - get: tool-om
   - task: deploy-director
     file: aws-concourse/tasks/deploy-director.yml
