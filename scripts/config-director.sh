@@ -11,9 +11,9 @@ do
   `echo "$line" | awk '{print "export "$1"="$3}'`
 done < <(terraform output)
 
-export AWS_ACCESS_KEY_ID=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^id | awk '{print $3}'`
-export AWS_SECRET_ACCESS_KEY=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^secret | awk '{print $3}'`
-export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
+#export AWS_ACCESS_KEY_ID=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^id | awk '{print $3}'`
+#export AWS_SECRET_ACCESS_KEY=`terraform state show aws_iam_access_key.pcf_iam_user_access_key | grep ^secret | awk '{print $3}'`
+#export RDS_PASSWORD=`terraform state show aws_db_instance.pcf_rds | grep ^password | awk '{print $3}'`
 
 cd $CWD
 
@@ -26,7 +26,7 @@ sudo chmod 755 /usr/local/bin/om-linux
 IAAS_CONFIGURATION=$(cat <<-EOF
 {
 "access_key_id": "${AWS_ACCESS_KEY_ID}",
-"secret_access_key": "${AWS_SECRET_ACCESS_KEY}",
+"secret_access_key": "${AWS_SECRET_ACCESS_KEY_ID}",
 "vpc_id": "${vpc_id}",
 "security_group": "${pcf_security_group}",
 "key_pair_name": "${AWS_KEY_NAME}",
