@@ -10,7 +10,7 @@ echo "==========================================================================
 
 # Apply Changes in Opsman
 
-om-linux --target https://opsman.$pcf_ert_domain -k -i true \
+om-linux --target https://opsman.$pcf_ert_domain -k -i TRUE \
        --username "$pcf_opsman_admin" \
        --password "$pcf_opsman_admin_passwd" \
   apply-changes
