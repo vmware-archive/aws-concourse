@@ -51,7 +51,7 @@ resources:
 - name: ert-concourse
   type: git
   source:
-    uri: https://github.com/c0-ops/ert-concourse.git
+    uri: https://github.com/jtgammon/ert-concourse.git
     branch: master
 
 - name: pcf-pipelines
@@ -160,6 +160,8 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
+      trigger: true
+      passed: [config-director]
     - get: tool-om
   - task: deploy-director
     file: aws-concourse/tasks/deploy-director.yml
@@ -205,7 +207,6 @@ jobs:
       passed: [import-stemcell]
     - get: ert-concourse
     - get: pivnet-elastic-runtime
-      passed: [import-stemcell]
       params:
         globs:
         - "*pivotal"
