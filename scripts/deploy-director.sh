@@ -13,4 +13,4 @@ echo "==========================================================================
 om-linux --target https://opsman.$pcf_ert_domain -k \
        --username "$pcf_opsman_admin" \
        --password "$pcf_opsman_admin_passwd" \
-  apply-changes -i true
+  apply-changes
