@@ -242,7 +242,7 @@ jobs:
   - task: prepare-rds
     file: aws-concourse/tasks/prepare-rds.yml
     params:
-      PEM: {{PEM}}
+      PEM: {{PEM_ESCAPED}}
       ERT_DOMAIN: {{ERT_DOMAIN}}
 
   - task: configure-json

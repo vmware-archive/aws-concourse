@@ -37,6 +37,24 @@ IAAS_CONFIGURATION=$(cat <<-EOF
 EOF
 )
 
+AZ_CONFIGURATION=$(cat <<-EOF
+{
+"availability_zones": [
+    {"name": "${az1}"},
+    {"name": "${az2}"}
+    {"name": "${az3}"}
+  ]
+}
+EOF
+)
+
+NTP_CONFIGURATION=$(cat <<-EOF
+{
+"ntp_servers_string": "0.amazon.pool.ntp.org"
+}
+EOF
+)
+
 NETWORK_CONFIGURATION=$(cat <<-EOF
 {
   "icmp_checks_enabled": false,
@@ -131,6 +149,18 @@ echo "Configuring Director Infrastructure @ https://opsman.$ERT_DOMAIN ..."
 echo "=============================================================================================="
 
 om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -k configure-bosh -i "$IAAS_CONFIGURATION"
+
+echo "=============================================================================================="
+echo "Configuring Director NTP @ https://opsman.$ERT_DOMAIN ..."
+echo "=============================================================================================="
+
+om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -k configure-bosh -d "$NTP_CONFIGURATION"
+
+echo "=============================================================================================="
+echo "Configuring Director AZs @ https://opsman.$ERT_DOMAIN ..."
+echo "=============================================================================================="
+
+om-linux -t https://opsman.$ERT_DOMAIN -u "$OPSMAN_USER" -p "$OPSMAN_PASSWORD" -k configure-bosh -a "$AZ_CONFIGURATION"
 
 echo "=============================================================================================="
 echo "Configuring Director Networks @ https://opsman.$ERT_DOMAIN ..."
