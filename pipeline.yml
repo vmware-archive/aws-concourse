@@ -134,6 +134,8 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
+      trigger: true
+      passed: [config-opsman]
     - get: pcfawsops-terraform-state-get
     - get: tool-om
   - task: config-director
@@ -207,6 +209,7 @@ jobs:
       passed: [import-stemcell]
     - get: ert-concourse
     - get: pivnet-elastic-runtime
+      passed: [import-stemcell]
       params:
         globs:
         - "*pivotal"
