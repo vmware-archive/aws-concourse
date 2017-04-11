@@ -41,7 +41,7 @@ AZ_CONFIGURATION=$(cat <<-EOF
 {
 "availability_zones": [
     {"name": "${az1}"},
-    {"name": "${az2}"}
+    {"name": "${az2}"},
     {"name": "${az3}"}
   ]
 }
