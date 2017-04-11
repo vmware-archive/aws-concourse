@@ -7,7 +7,6 @@ image_resource:
     repository: virtmerlin/c0-worker
 inputs:
   - name: aws-concourse
-  - name: pcfawsops-terraform-state-get
 outputs:
   - name: pcfawsops-terraform-state-put
 params:
@@ -23,7 +22,7 @@ params:
   TF_VAR_aws_region:
   TF_VAR_az1:
   TF_VAR_az2:
-  TF_VAR_az3:  
+  TF_VAR_az3:
   TF_VAR_route53_zone_id:
 run:
   path: aws-concourse/scripts/prepare-aws.sh
