@@ -10,7 +10,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/pivotal-cf/aws-concourse.git
+    uri: https://github.com/jtgammon/aws-concourse.git
 
 - name: pcfawsops-terraform-state-put
   type: s3
@@ -39,20 +39,13 @@ resources:
     repository: om
     access_token: {{GITHUB_TOKEN}}
 
-- name: tool-om-beta
-  type: github-release
-  source:
-    user: c0-ops
-    repository: om
-    access_token: {{GITHUB_TOKEN}}
-
 - name: pivnet-elastic-runtime
   type: pivnet
   check_every: 4h
   source:
     api_token: {{PIVNET_TOKEN}}
     product_slug: elastic-runtime
-    product_version: 1\.9\..*
+    product_version: 1\.10\..*
     sort_by: semver
 
 - name: ert-concourse
@@ -140,12 +133,10 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
+    - get: pcfawsops-terraform-state-get
+    - get: tool-om
       trigger: true
       passed: [config-opsman]
-    - get: pcfawsops-terraform-state-get
-    - get: tool-om-beta
-      globs: [om-linux]
-      version: { tag: '0.17-beta.0' }
   - task: config-director
     file: aws-concourse/tasks/config-director.yml
     params:
@@ -154,7 +145,7 @@ jobs:
       OPSMAN_PASSWORD: {{OPSMAN_PASSWORD}}
       AWS_TEMPLATE: "c0-aws-base"
       AWS_KEY_NAME: {{TF_VAR_aws_key_name}}
-      PEM: {{PEM}}
+      PEM: {{PEM_ESCAPED}}
       AWS_REGION: {{TF_VAR_aws_region}}
       S3_ENDPOINT: {{S3_ENDPOINT}}
       ert_subnet_reserved_ranges_z1: {{ert_subnet_reserved_ranges_z1}}
@@ -170,9 +161,9 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
+    - get: tool-om
       trigger: true
       passed: [config-director]
-    - get: tool-om
   - task: deploy-director
     file: aws-concourse/tasks/deploy-director.yml
     params:
@@ -184,10 +175,10 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-      trigger: true
-      passed: [deploy-director]
     - get: pcf-pipelines
     - get: tool-om
+      trigger: true
+      passed: [deploy-director]
       params:
         globs: [om-linux]
     - get: stemcell-downloader
@@ -213,8 +204,6 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-      trigger: true
-      passed: [import-stemcell]
     - get: ert-concourse
     - get: pivnet-elastic-runtime
       passed: [import-stemcell]
@@ -222,6 +211,8 @@ jobs:
         globs:
         - "*pivotal"
     - get: tool-om
+      trigger: true
+      passed: [import-stemcell]
       params:
         globs:
         - "om-linux"
@@ -239,18 +230,18 @@ jobs:
   - aggregate:
     - get: ert-concourse
     - get: tool-om
+      trigger: true
+      passed: [upload-ert]
       params:
         globs:
         - "om-linux"
     - get: aws-concourse
-      trigger: true
-      passed: [upload-ert]
     - get: pcfawsops-terraform-state-get
 
   - task: prepare-rds
     file: aws-concourse/tasks/prepare-rds.yml
     params:
-      PEM: {{PEM}}
+      PEM: {{PEM_ESCAPED}}
       ERT_DOMAIN: {{ERT_DOMAIN}}
 
   - task: configure-json
@@ -288,10 +279,10 @@ jobs:
   plan:
   - aggregate:
     - get: aws-concourse
-      trigger: true
-      passed: [configure-ert]
     - get: ert-concourse
     - get: tool-om
+      trigger: true
+      passed: [configure-ert]
       params:
         globs:
         - "om-linux"
