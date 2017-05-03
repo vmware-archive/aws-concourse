@@ -43,7 +43,7 @@ resource "aws_iam_instance_profile" "pcf_admin_role_instance_profile" {
 
 # Policies
 resource "aws_iam_user_policy" "PcfErtPolicy" {
-    name = "PcfErtPolicy"
+    name = "${var.environment}_PcfErtPolicy"
     user = "${aws_iam_user.pcf_iam_user.name}"
     policy = <<EOF
 {
@@ -72,7 +72,7 @@ EOF
 }
 
 resource "aws_iam_policy" "PcfAdminPolicy" {
-    name = "PcfAdminPolicy"
+    name = "${var.environment}_PcfAdminPolicy"
     path = "/"
     description = "${var.environment} PCF Admin Policy"
     policy = "${data.aws_iam_policy_document.pcf_iam_rds_role_policy_document.json}"
