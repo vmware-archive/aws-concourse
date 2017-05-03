@@ -165,3 +165,30 @@ cd ci
 fly -t local set-pipeline -p pcf-aws-prepare -c pcfaws_terraform_pipeline.yml --load-vars-from pcfaws_terraform_params.yml
 fly -t local unpause-pipeline -p pcf-aws-prepare
 ```
+
+
+## Testing terraform changes
+
+This is an approach to testing the terraform changes locally before committing the changes back.
+Create a [tfvars](https://www.terraform.io/intro/getting-started/variables.html#from-a-file) file with the list of the variables required for the terraform script, and has a format along these lines:
+```
+aws_access_key = "*******"
+aws_secret_key = "*******"
+opsman_ami = "ami-d0b4d0c6"
+amis_nat = "ami-303b1458"
+aws_region = "us-east-1"
+az1 = "us-east-1a"
+az2 = "us-east-1b"
+az3 = "us-east-1d"
+```
+
+This can be created using the parameters file for the pipeline by searching for the lines with `TF_VAR_` prefix, removing the `TF_VAR_` prefix and formatting the rest of the content in the above form.
+
+Then run `terraform plan` with this var file and grep for the expected results.
+
+For eg. when adding an environment prefix to say the IAM policy name `PcfErtPolicy`, a sample test would be along these lines:
+
+```
+terraform plan -var-file=TF_VARS.txt | grep PcfErtPolicy | grep myenv
+echo $? # check for exit code, 0 is good, 1 is bad
+```
