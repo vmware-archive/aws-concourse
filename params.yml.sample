@@ -51,3 +51,6 @@ PEM:
 ERT_SSL_CERT: generate
 ERT_SSL_KEY:
 ROUTE_53_ZONE_ID:
+OPSMAN_ALLOW_ACCESS: false 
+#ignored if OPSMAN_ALLOW_ACCESS is set to false
+TF_VAR_opsman_allow_cidr: 0.0.0.0/0

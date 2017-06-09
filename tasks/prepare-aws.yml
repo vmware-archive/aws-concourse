@@ -24,5 +24,7 @@ params:
   TF_VAR_az2:
   TF_VAR_az3:
   TF_VAR_route53_zone_id:
+  OPSMAN_ALLOW_ACCESS:
+  TF_VAR_opsman_allow_cidr:
 run:
   path: aws-concourse/scripts/prepare-aws.sh
